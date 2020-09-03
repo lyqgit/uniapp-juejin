@@ -1,0 +1,83 @@
+{
+	"easycom": {
+		"^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
+	},
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/boilingPoint/index",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/booklet/index",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/found/index",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/my/index",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/login/index",
+			"style": {
+				"navigationBarTitleText": "登陆"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationStyle": "custom",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar":{
+		"list":[
+			{
+				"pagePath": "pages/index/index",
+				"iconPath": "static/home_unselect.png",
+				"selectedIconPath": "static/home_select.png",
+				"text": "主页"
+			},
+			{
+				"pagePath": "pages/boilingPoint/index",
+				"iconPath": "static/recommend_unselect.png",
+				"selectedIconPath": "static/recommend_select.png",
+				"text": "沸点"
+			},
+			{
+				"pagePath": "pages/found/index",
+				"iconPath": "static/search_unselect.png",
+				"selectedIconPath": "static/search_select.png",
+				"text": "发现"
+			},
+			{
+				"pagePath": "pages/booklet/index",
+				"iconPath": "static/book_unselect.png",
+				"selectedIconPath": "static/book_select.png",
+				"text": "小册"
+			},
+			{
+				"pagePath": "pages/my/index",
+				"iconPath": "static/account_unselect.png",
+				"selectedIconPath": "static/account_select.png",
+				"text": "我"
+			}
+		]
+	}
+}
