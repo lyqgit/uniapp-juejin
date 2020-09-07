@@ -1,9 +1,7 @@
 <template>
-	<view class="body-layout body-layout-grey">
-		<!-- <view>关注</view> -->
+	<scroll-view scroll-y class="view-pager-con body-layout-grey" @scrolltolower="onreachBottom">
 		<notLogin></notLogin>
-	</view>
-	
+	</scroll-view>
 </template>
 
 <script>
@@ -13,9 +11,18 @@
 		components:{
 			notLogin
 		},
+		methods:{
+			// scroll-view到底部加载更多
+			onreachBottom() {
+				console.log('加载更多')
+			}
+		}
 	}
 </script>
 
 <style scoped>
-	
+	.view-pager-con{
+		height: 100%;
+		width: 100%;
+	}
 </style>

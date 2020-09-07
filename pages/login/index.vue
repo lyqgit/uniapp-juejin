@@ -1,7 +1,7 @@
 <template>
 	<view class="login-con">
 		<view class="header">
-			<iconfont :icon="arrow" style="color: #007FFF;" @click.native="goBack"></iconfont>
+			<iconfont :icon="arrow" style="color: #007FFF;font-size: 32rpx;" @click.native="goBack"></iconfont>
 			<text class="header-title">登录</text>
 		</view>
 		<view class="logo-con">

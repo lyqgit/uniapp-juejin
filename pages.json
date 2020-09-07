@@ -39,7 +39,7 @@
 				"navigationBarTitleText": "登陆"
 			}
 		}
-	],
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationStyle": "custom",

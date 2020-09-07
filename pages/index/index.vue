@@ -16,14 +16,14 @@
 		<view class="view-pager">
 			<swiper style="height: 100%;" :current="swiperCurrent" @transition="transition" @animationfinish="animationfinish">
 				<swiper-item class="swiper-item">
-					<scroll-view class="view-pager-con" scroll-y style="height: 100%;width: 100%;" @scrolltolower="onreachBottom">
+					<viewpager :direct="true" :ownerKey="0" :currentKey="swiperCurrent">
 						<follow></follow>
-					</scroll-view>
+					</viewpager>
 				</swiper-item>
 				<swiper-item class="swiper-item">
-					<scroll-view scroll-y style="" @scrolltolower="onreachBottom">
+					<viewpager :direct="false" :ownerKey="1" :currentKey="swiperCurrent">
 						<recommend></recommend>
-					</scroll-view>
+					</viewpager>
 				</swiper-item>
 			</swiper>
 		</view>
@@ -32,14 +32,15 @@
 </template>
 
 <script>
-	import iconfont from '../../common/components/iconfont'
+	
 	import follow from '../../viewpager/home/follow'
 	import recommend from '../../viewpager/home/recommend'
+	import viewpager from '../../common/components/viewpager.vue'
 	export default {
 		components:{
-			iconfont,
 			follow,
 			recommend,
+			viewpager,
 		},
 		data() {
 			return {
@@ -49,38 +50,40 @@
 				},
 				list: [
 					{
-						name: '关注'
+						name: '关注',
+						component:'follow'
 					},
 					{
-						name: '推荐'
+						name: '推荐',
+						component:'recommend'
 					},
-					{
-						name: '热榜'
-					},
-					{
-						name: '后端'
-					},
-					{
-						name: '前端'
-					},
-					{
-						name: 'Android'
-					},
-					{
-						name: 'iOS'
-					},
-					{
-						name: '人工智能'
-					},
-					{
-						name: '开发工具'
-					},
-					{
-						name: '代码人生'
-					},
-					{
-						name: '阅读'
-					},
+					// {
+					// 	name: '热榜'
+					// },
+					// {
+					// 	name: '后端'
+					// },
+					// {
+					// 	name: '前端'
+					// },
+					// {
+					// 	name: 'Android'
+					// },
+					// {
+					// 	name: 'iOS'
+					// },
+					// {
+					// 	name: '人工智能'
+					// },
+					// {
+					// 	name: '开发工具'
+					// },
+					// {
+					// 	name: '代码人生'
+					// },
+					// {
+					// 	name: '阅读'
+					// },
 				],
 				current:0,
 				swiperCurrent:0
@@ -107,15 +110,17 @@
 				this.swiperCurrent = current;
 				this.current = current;
 			},
-			// scroll-view到底部加载更多
-			onreachBottom() {
-				
-			}
+			
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
+	
+	.view-pager-con{
+		height: 100%;
+		width: 100%;
+	}
 	
 	.home-layout{
 		display: flex;
@@ -147,7 +152,7 @@
 	}
 	
 	.bottom-shadow{
-		box-shadow: 0 5rpx 10rpx #000000 inset;
+		// box-shadow: 0 5rpx 10rpx #000000 inset;
 	}
 	
 	.swiper-item{
