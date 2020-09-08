@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App'
+import store from './store'
 import uView from 'uview-ui'
 import division from './common/components/division.vue'
 import iconfont from './common/components/iconfont'
@@ -11,6 +12,7 @@ Vue.config.productionTip = false
 Vue.use(uView)
 
 App.mpType = 'app'
+App.store = store
 
 const app = new Vue({
     ...App

@@ -1,13 +1,15 @@
 <template>
 	<view class="home-layout">
-		<view class="header">
-			<view class="header-search">
-				<iconfont :icon="icon.search"></iconfont>
-				<text style="margin-left: 20rpx;">搜索掘金</text>
-			</view>
-			<view class="header-setting">
-				<iconfont :icon="icon.setting"></iconfont>
-				<text style="margin-left:10rpx;">标签</text>
+		<view id="home-header">
+			<view class="header" >
+				<view class="header-search">
+					<iconfont :icon="icon.search"></iconfont>
+					<text style="margin-left: 20rpx;">搜索掘金</text>
+				</view>
+				<view class="header-setting">
+					<iconfont :icon="icon.setting"></iconfont>
+					<text style="margin-left:10rpx;">标签</text>
+				</view>
 			</view>
 		</view>
 		<view class="tab-layout">
@@ -25,6 +27,16 @@
 						<recommend></recommend>
 					</viewpager>
 				</swiper-item>
+				<swiper-item class="swiper-item">
+					<viewpager :direct="false" :ownerKey="2" :currentKey="swiperCurrent">
+						<hot></hot>
+					</viewpager>
+				</swiper-item>
+				<swiper-item class="swiper-item" v-for="item in categoryList" :key="item.category_id">
+					<viewpager :direct="false" :ownerKey="item.ownerKey" :currentKey="swiperCurrent">
+						<category :cateId="item.category_id" :hotTags="item.hot_tags"></category>
+					</viewpager>
+				</swiper-item>
 			</swiper>
 		</view>
 		
@@ -35,11 +47,15 @@
 	
 	import follow from '../../viewpager/home/follow'
 	import recommend from '../../viewpager/home/recommend'
+	import hot from '../../viewpager/home/hot'
+	import category from '../../viewpager/home/category'
 	import viewpager from '../../common/components/viewpager.vue'
 	export default {
 		components:{
 			follow,
 			recommend,
+			hot,
+			category,
 			viewpager,
 		},
 		data() {
@@ -57,44 +73,42 @@
 						name: '推荐',
 						component:'recommend'
 					},
-					// {
-					// 	name: '热榜'
-					// },
-					// {
-					// 	name: '后端'
-					// },
-					// {
-					// 	name: '前端'
-					// },
-					// {
-					// 	name: 'Android'
-					// },
-					// {
-					// 	name: 'iOS'
-					// },
-					// {
-					// 	name: '人工智能'
-					// },
-					// {
-					// 	name: '开发工具'
-					// },
-					// {
-					// 	name: '代码人生'
-					// },
-					// {
-					// 	name: '阅读'
-					// },
+					{
+						name: '热榜'
+					}
 				],
 				current:0,
 				swiperCurrent:0
 			}
 		},
+		computed:{
+			categoryList(){
+				const tags = this.$store.state.tag.list
+				tags.forEach((item,index)=>{
+					const temp = {name:item.category.category_name,ownerKey:index+3}
+					this.list.push(temp)
+					item.ownerKey=index+3
+					item.hot_tags.unshift({id:0,tag_name:'全部'})
+				})
+				console.log(tags)
+				return this.$store.state.tag.list
+			},
+		},
 		onLoad() {
-
+			console.log(this.$store.state.tag.list)
+		},
+		onReady() {
+			const header = document.querySelector('#home-header')
+			header.style.height = window.getComputedStyle(header,null).height
 		},
 		methods: {
+			categoryOwnerKey(num){
+				console.log(num)
+				return num+3
+			},
 			// tabs通知swiper切换
 			tabsChange(index) {
+				console.log('tab变更',index)
 				this.swiperCurrent = index;
 			},
 			// swiper-item左右移动，通知tabs的滑块跟随移动
@@ -127,6 +141,10 @@
 		flex-direction: column;
 		width: 100%;
 		height: 100%;
+	}
+	
+	#home-header{
+		transition: all .5s ease;
 	}
 	
 	.header{

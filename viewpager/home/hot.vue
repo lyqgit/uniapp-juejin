@@ -6,35 +6,45 @@
 		refresher-enabled
 		:refresher-triggered="loadStatus"
 		@scrolltolower="onreachBottom"
-		@scroll="scrollAnimate"
 	>
 		<view>
-			<division></division>
-			<loginTip></loginTip>
-			<division></division>
-			<hotRecommend :list="hotList"></hotRecommend>
+			<headerTag :tags="hotTags" :currentTag="currentTagId" @select="selectTag"></headerTag>
 			<articleList :list="articleList"></articleList>
 		</view>
 	</scroll-view>
 </template>
 
 <script>
-	import loginTip from './components/loginTip'
-	import hotRecommend from './components/hotRecommend'
+	import headerTag from './components/headerTag.vue'
 	import articleList from '../../common/components/articleList.vue'
-	import scrollHeader from '../../common/minix/scrollHeader'
 	import { postList } from '../../services/recommendApi/recommendAllFeed'
 	export default{
 		name:'recommend',
 		components:{
-			loginTip,
-			hotRecommend,
+			headerTag,
 			articleList,
 		},
-		mixins:[scrollHeader],
 		data(){
 			return {
-				hotList:[],
+				currentTagId:0,
+				hotTags:[
+					{
+						id:3,
+						name:'3日之内'
+					},
+					{
+						id:7,
+						name:'7日之内'
+					},
+					{
+						id:30,
+						name:'30日之内'
+					},
+					{
+						id:0,
+						name:'全部'
+					}
+				],
 				articleList:[],
 				articlePage:0,
 				loadStatus:false
@@ -44,18 +54,15 @@
 			this.fresh()
 		},
 		methods:{
-			scrolltoupper(event){
-				console.log(event.detail)
-				// const header = document.querySelector('#home-header')
-				// header.style.height = '0px'
-				// header.style.padding = '0px'
+			selectTag(tagId){
+				this.currentTagId = tagId
 			},
 			// scroll-view到底部加载更多
 			onreachBottom() {
 				console.log('加载更多')
 				const list = this.articleList
 				// 文章列表
-				postList({"id_type":2,"client_type":2606,"cursor":this.articlePage,"limit":20,"sort_type":200}).then(res=>{this.articleList = list.concat(res.data);this.articlePage=res.cursor;console.log('数据',res.data)})
+				postList({"id_type":2,"client_type":2606,"cursor":this.articlePage,"limit":20,"sort_type":this.currentTagId}).then(res=>{this.articleList = list.concat(res.data);this.articlePage=res.cursor;console.log('数据',res.data)})
 			},
 			// 刷新
 			fresh(){
@@ -63,10 +70,8 @@
 					this.loadStatus = true
 					
 					console.log('下拉刷新')
-					Promise.all([
-						postList({"id_type":2,"client_type":2606,"sort_type":213,"cursor":"0","limit":3}).then(res=>{this.hotList = res.data}),
-						postList({"id_type":2,"client_type":2606,"cursor":"0","limit":20,"sort_type":200}).then(res=>{this.articleList = res.data})
-					]).
+					postList({"id_type":2,"client_type":2606,"cursor":"0","limit":20,"sort_type":this.currentTagId}).
+					then(res=>{this.articleList = res.data}).
 					then(res=>{
 						setTimeout(()=>{
 							this.loadStatus = false
@@ -75,6 +80,11 @@
 					})
 				}
 			},
+		},
+		watch:{
+			currentTagId(){
+				this.fresh()
+			}
 		}
 	}
 </script>

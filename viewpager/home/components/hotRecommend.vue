@@ -8,7 +8,7 @@
 				<iconfont :icon="rightArrow" style="vertical-align: middle;" ></iconfont>
 			</view>	
 		</view>
-		<view v-for="item in list">
+		<view v-for="item in list" :key="item.item_info.article_info.article_id">
 			<view class="list-layout">
 				<view style="flex: 1;overflow: hidden; text-overflow: ellipsis;white-space: nowrap; ">
 					<view class="list-title">{{item.item_info.article_info.title}}</view>

@@ -1,7 +1,13 @@
 <script>
+	import { postTagList } from './services/tagApi'
 	export default {
 		onLaunch: function() {
 			console.log('App Launch')
+			postTagList()
+			.then(res=>{
+				console.log(this.$store)
+				this.$store.commit('tag/setTag',res.data)
+			})
 		},
 		onShow: function() {
 			console.log('App Show')
