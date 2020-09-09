@@ -3,7 +3,7 @@
 		<view class="notLogin-layout">
 			<image src="../../static/account_circle.png" mode="aspectFit"></image>
 			<view class="des">登录后可以查看关注动态</view>
-			<view class="btn">
+			<view class="btn" @click="goToLogin">
 				<text>登录/注册</text>
 			</view>
 		</view>
@@ -12,6 +12,16 @@
 </template>
 
 <script>
+	export default {
+		name:'notLogin',
+		methods:{
+			goToLogin(){
+				uni.navigateTo({
+					url:'/pages/login/index'
+				})
+			}
+		}
+	}
 </script>
 
 <style lang="scss" scoped>

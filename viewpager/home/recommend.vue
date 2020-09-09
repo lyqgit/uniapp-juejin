@@ -44,12 +44,6 @@
 			this.fresh()
 		},
 		methods:{
-			scrolltoupper(event){
-				console.log(event.detail)
-				// const header = document.querySelector('#home-header')
-				// header.style.height = '0px'
-				// header.style.padding = '0px'
-			},
 			// scroll-view到底部加载更多
 			onreachBottom() {
 				console.log('加载更多')
@@ -65,7 +59,7 @@
 					console.log('下拉刷新')
 					Promise.all([
 						postList({"id_type":2,"client_type":2606,"sort_type":213,"cursor":"0","limit":3}).then(res=>{this.hotList = res.data}),
-						postList({"id_type":2,"client_type":2606,"cursor":"0","limit":20,"sort_type":200}).then(res=>{this.articleList = res.data})
+						postList({"id_type":2,"client_type":2606,"cursor":"0","limit":20,"sort_type":200}).then(res=>{this.articleList = res.data;this.articlePage=res.cursor})
 					]).
 					then(res=>{
 						setTimeout(()=>{

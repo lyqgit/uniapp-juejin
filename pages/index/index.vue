@@ -1,6 +1,6 @@
 <template>
 	<view class="home-layout">
-		<view id="home-header">
+		<view id="home-header" :style="{height:headerHeight}">
 			<view class="header" >
 				<view class="header-search">
 					<iconfont :icon="icon.search"></iconfont>
@@ -93,13 +93,20 @@
 				console.log(tags)
 				return this.$store.state.tag.list
 			},
+			headerHeight(){
+				return this.$store.state.header.headerHeight
+			}
 		},
 		onLoad() {
 			console.log(this.$store.state.tag.list)
 		},
 		onReady() {
-			const header = document.querySelector('#home-header')
-			header.style.height = window.getComputedStyle(header,null).height
+			const query = uni.createSelectorQuery().in(this);
+			query.select('.header').boundingClientRect(data => {
+				console.log("得到布局位置信息" + JSON.stringify(data));
+				console.log("节点离页面顶部的距离为" + data.top);
+				this.$store.commit('header/setHeaderHeight',data.height+'px') 
+			}).exec();
 		},
 		methods: {
 			categoryOwnerKey(num){

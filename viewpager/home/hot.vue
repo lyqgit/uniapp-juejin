@@ -6,6 +6,7 @@
 		refresher-enabled
 		:refresher-triggered="loadStatus"
 		@scrolltolower="onreachBottom"
+		@scroll="scrollAnimate"
 	>
 		<view>
 			<headerTag :tags="hotTags" :currentTag="currentTagId" @select="selectTag"></headerTag>
@@ -15,6 +16,7 @@
 </template>
 
 <script>
+	import scrollHeader from '../../common/minix/scrollHeader'
 	import headerTag from './components/headerTag.vue'
 	import articleList from '../../common/components/articleList.vue'
 	import { postList } from '../../services/recommendApi/recommendAllFeed'
@@ -24,6 +26,7 @@
 			headerTag,
 			articleList,
 		},
+		mixins:[scrollHeader],
 		data(){
 			return {
 				currentTagId:0,

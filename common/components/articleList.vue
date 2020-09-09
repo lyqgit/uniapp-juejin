@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<view class="articleList-layout" v-for="(item,index) in list" :key="index" >
-			<view v-if="item.item_type === 2">
+			<view v-if="item.item_type&&item.item_type === 2">
 				<view class="article-user">
 					<image lazy-load :src="item.item_info.author_user_info.avatar_large" mode="aspectFit"></image>
 					<text class="user-name">{{item.item_info.author_user_info.user_name}}</text>
@@ -25,7 +25,7 @@
 					</view>
 				</view>
 			</view>
-			<view v-else-if="item.item_type === 14">
+			<view v-else-if="item.item_type&&item.item_type === 14">
 				<view class="article-user">
 					<image lazy-load :src="item.item_info.avatar" mode="aspectFit"></image>
 					<text class="user-name">{{item.item_info.author_name}}</text>
@@ -91,21 +91,26 @@
 		.article-content{
 			flex: 1;
 			color: $custom-font-color-title;
-			height: 150rpx;
-			overflow: hidden;
-			text-overflow:ellipsis;
-			white-space: nowrap;
 			.title{
 				font-size: 30rpx;
 				font-weight: bold;
 			}
 			.content{
 				width: 100%;
-				margin-top: 20rpx;
 				font-size: 20rpx;
+				/* #ifdef APP-PLUS */
+				margin-top: 10rpx;
+				/* #endif */
+				/* #ifndef APP-PLUS */
+				margin-top: 20rpx;
+				/* #endif */
 				overflow: hidden;
 				text-overflow:ellipsis;
-				white-space: normal;
+				display: -webkit-box;
+				word-break: break-all;
+				-webkit-box-orient: vertical;
+				-webkit-line-clamp: 3;
+				overflow: hidden;
 			}
 		}
 		>image{

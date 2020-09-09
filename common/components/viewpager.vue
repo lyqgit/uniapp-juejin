@@ -1,5 +1,5 @@
 <template>
-	<view style="width: 100%;height: 100%;">
+	<view style="width: 100%;height: 100%;background-color: #EFF2F5;">
 		<slot v-if="show"></slot>
 		<view v-if="!show" style="height:100%;;display:flex;align-items: center;justify-content: center;">
 			<u-loading mode="circle" color="primary" size="80"></u-loading>

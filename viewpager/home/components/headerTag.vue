@@ -25,7 +25,10 @@
 		.tag{
 			display: inline-block;
 			padding: 10rpx 15rpx;
-			border-radius: 30rpx;
+			//#ifdef APP-PLUS
+			line-height: 30rpx;
+			//#endif
+			border-radius: 20rpx;
 			font-size: 20rpx;
 			&:nth-of-type(n+1){
 				margin-left: 15rpx;

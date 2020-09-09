@@ -6,6 +6,7 @@
 		refresher-enabled
 		:refresher-triggered="loadStatus"
 		@scrolltolower="onreachBottom"
+		@scroll="scrollAnimate"
 	>
 		<view>
 			<headerTag :tags="hotTags" :currentTag="currentTagId" @select="selectTag"></headerTag>
@@ -15,6 +16,7 @@
 </template>
 
 <script>
+	import scrollHeader from '../../common/minix/scrollHeader'
 	import headerTag from './components/headerTag.vue'
 	import articleList from '../../common/components/articleList.vue'
 	import { postList } from '../../services/recommendApi/recommendAllFeed'
@@ -25,6 +27,7 @@
 			articleList,
 		},
 		props:['hotTags','cateId'],
+		mixins:[scrollHeader],
 		data(){
 			return {
 				currentTagId:0,
@@ -59,7 +62,7 @@
 					if(!!this.currentTagId)params.tag_id = this.currentTagId
 					console.log('下拉刷新')
 					postList(params).
-					then(res=>{this.articleList = res.data}).
+					then(res=>{this.articleList = res.data;this.articlePage=res.cursor}).
 					then(res=>{
 						setTimeout(()=>{
 							this.loadStatus = false

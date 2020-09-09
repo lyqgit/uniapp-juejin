@@ -61,6 +61,7 @@ class Request {
 		
 	}
 	
+	//#ifdef H5
 	get=(url,data,header)=>{
 		return this.request(this.isDev?'/api'+url:url,"GET",data,header)
 	}
@@ -72,14 +73,40 @@ class Request {
 	put=(url,data,header)=>{
 		return this.request(this.isDev?'/api'+url:url,"PUT",data,header)
 	}
+	//#endif
+	
+	//#ifdef APP-PLUS
+	get=(url,data,header)=>{
+		return this.request(url,"GET",data,header)
+	}
+	
+	post=(url,data,header)=>{
+		return this.request(url,"POST",data,header)
+	}
+	
+	put=(url,data,header)=>{
+		return this.request(url,"PUT",data,header)
+	}
+	//#endif
 	
 }
 
+//#ifdef H5
 const instance = new Request('',{
 	'Content-Type':'application/json',
 	'X-Agent':'Juejin/xiaomi/Redmi Note 7 Pro Android/9 Juejin/Android/5.9.3',
 	'X-Juejin-Src':'android',
 })
+//#endif
+
+//#ifdef APP-PLUS
+// app端
+const instance = new Request('https://apinew.juejin.im',{
+	'Content-Type':'application/json',
+	'X-Agent':'Juejin/xiaomi/Redmi Note 7 Pro Android/9 Juejin/Android/5.9.3',
+	'X-Juejin-Src':'android',
+})
+//#endif
 
 const get = instance.get
 const post = instance.post
