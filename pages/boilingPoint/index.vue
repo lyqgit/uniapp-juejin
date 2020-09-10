@@ -7,23 +7,77 @@
 			<swiper style="height: 100%;" :current="swiperCurrent" @transition="transition" @animationfinish="animationfinish">
 				<swiper-item class="swiper-item">
 					<viewpager :direct="true" :ownerKey="0" :currentKey="swiperCurrent">
+						<recommend></recommend>
+					</viewpager>
+				</swiper-item>
+				<swiper-item class="swiper-item">
+					<viewpager :direct="false" :ownerKey="1" :currentKey="swiperCurrent">
+						<hot></hot>
+					</viewpager>
+				</swiper-item>
+				<swiper-item class="swiper-item">
+					<viewpager :direct="false" :ownerKey="2" :currentKey="swiperCurrent">
 						<follow></follow>
+					</viewpager>
+				</swiper-item>
+				<swiper-item class="swiper-item">
+					<viewpager :direct="false" :ownerKey="3" :currentKey="swiperCurrent">
+						<category topicId="6824710203301167112"></category>
+					</viewpager>
+				</swiper-item>
+				<swiper-item class="swiper-item">
+					<viewpager :direct="false" :ownerKey="4" :currentKey="swiperCurrent">
+						<category topicId="6819970850532360206"></category>
+					</viewpager>
+				</swiper-item>
+				<swiper-item class="swiper-item">
+					<viewpager :direct="false" :ownerKey="5" :currentKey="swiperCurrent">
+						<category topicId="6824710202487472141"></category>
+					</viewpager>
+				</swiper-item>
+				<swiper-item class="swiper-item">
+					<viewpager :direct="false" :ownerKey="6" :currentKey="swiperCurrent">
+						<category topicId="6824710202562969614"></category>
+					</viewpager>
+				</swiper-item>
+				<swiper-item class="swiper-item">
+					<viewpager :direct="false" :ownerKey="7" :currentKey="swiperCurrent">
+						<category topicId="6824710202378436621"></category>
+					</viewpager>
+				</swiper-item>
+				<swiper-item class="swiper-item">
+					<viewpager :direct="false" :ownerKey="8" :currentKey="swiperCurrent">
+						<category topicId="6824710202000932877"></category>
+					</viewpager>
+				</swiper-item>
+				<swiper-item class="swiper-item">
+					<viewpager :direct="false" :ownerKey="9" :currentKey="swiperCurrent">
+						<category topicId="6824710203112423437"></category>
 					</viewpager>
 				</swiper-item>
 			</swiper>
 		</view>
-		
+		<view class="float">
+			<iconfont :icon="icon.edit" style="font-size: 46rpx;"></iconfont>
+		</view>
 	</view>
 </template>
 
 <script>
-	
-	import follow from '../../viewpager/home/follow'
+	// 组件
+	import recommend from '../../viewpager/boilingPoint/recommend.vue'
+	import hot from '../../viewpager/boilingPoint/hot.vue'
+	import follow from '../../viewpager/boilingPoint/follow.vue'
+	import category from '../../viewpager/boilingPoint/category.vue'
 	import viewpager from '../../common/components/viewpager.vue'
+	
 	export default {
 		name:'boilingPoint',
 		components:{
+			recommend,
+			hot,
 			follow,
+			category,
 			viewpager,
 		},
 		data() {
@@ -31,6 +85,7 @@
 				icon:{
 					search:'\ue606',
 					setting:'\ue611',
+					edit:'\ue627'
 				},
 				list: [
 					{
@@ -61,11 +116,11 @@
 						name: '开发工具推荐'
 					},
 					{
-						name: '掘金相亲'
+						name: '树洞一下'
 					},
 				],
 				current:0,
-				swiperCurrent:0
+				swiperCurrent:0,
 			}
 		},
 		computed:{
@@ -113,6 +168,20 @@
 	.view-pager-con{
 		height: 100%;
 		width: 100%;
+	}
+	
+	.float{
+		position: fixed;
+		right: 40rpx;
+		bottom: 70px;
+		z-index: 99;
+		background-color: $custom-font-color-blue;
+		width: 100rpx;
+		height: 100rpx;
+		border-radius: 50rpx;
+		line-height: 100rpx;
+		text-align: center;
+		color: $uni-bg-color;
 	}
 	
 	.home-layout{

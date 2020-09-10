@@ -82,3 +82,38 @@ $custom-font-color-blue:#007FFF;
 $custom-font-color-des:#A3AAB3;
 $custom-font-color-username:#1F1F20;
 $custom-font-color-title:#1C1C1E;
+
+// 代码块
+
+// 标题
+@mixin title($fontSize:30rpx) {
+	font-size: $fontSize;
+	color: $custom-font-color-title;
+	font-weight: bold;
+}
+
+// 描述
+@mixin description($fontSize:20rpx) {
+	font-size: $fontSize;
+	color: $custom-font-color-des;
+}
+
+// 内容标签
+@mixin contentTag($fontSize:24rpx) {
+	display: inline-block;
+	font-size: $fontSize;
+	color: $custom-font-color-blue;
+	border: 2rpx solid $custom-font-color-blue;
+	border-radius: 50rpx;
+	padding: 10rpx 20rpx;
+}
+
+// 过多内容省略
+@mixin sl($val:3) {
+	overflow: hidden;
+	text-overflow:ellipsis;
+	display: -webkit-box;
+	word-break: break-all;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: $val;
+}

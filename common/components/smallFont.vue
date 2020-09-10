@@ -11,11 +11,12 @@
 
 <style lang="scss" scoped>
 	.small-font{
+		display: inline-block;
 		color: $uni-bg-color;
-		width: 20rpx;
-		height: 20rpx;
 		line-height: 20rpx;
 		text-align: center;
 		border-radius: 6rpx;
+		padding:6rpx;
+		font-size: 20rpx;
 	}
 </style>

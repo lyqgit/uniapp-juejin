@@ -7,10 +7,6 @@
 		:refresher-triggered="loadStatus"
 		@scrolltolower="onreachBottom"
 	>
-		<division></division>
-		<view class="banner">
-			<banner></banner>
-		</view>
 		<view class="comment-layout">
 			<commentList :list="list"></commentList>
 		</view>
@@ -19,18 +15,17 @@
 
 <script>
 	//接口
-	import { postRecommendList } from '../../services/recommendApi/shortMsg'
-	import banner from './components/banner'
+	import { postTopicList } from '../../services/recommendApi/shortMsg'
 	import commentList from './components/commentList'
 	export default {
-		name:'boilingPointRecommend',
+		name:'boilingPointFishingAtWork',
 		components:{
-			banner,
 			commentList
 		},
 		created() {
 			this.fresh()
 		},
+		props:['topicId'],
 		data(){
 			return {
 				list:[],
@@ -44,7 +39,7 @@
 				console.log('加载更多')
 				const list = this.list
 				// 文章列表
-				postRecommendList({"cursor":this.page,"limit":20,"id_type":4,"sort_type":300}).then(res=>{this.list = list.concat(res.data);this.page=res.cursor;console.log('数据',res.data)})
+				postTopicList({"cursor":this.page,"limit":20,"id_type":4,"sort_type":500,"topic_id":this.topicId}).then(res=>{this.list = list.concat(res.data);this.page=res.cursor;console.log('数据',res.data)})
 			},
 			// 刷新
 			fresh(){
@@ -52,7 +47,7 @@
 					this.loadStatus = true
 					
 					console.log('下拉刷新')
-					postRecommendList({"cursor":"0","limit":20,"id_type":4,"sort_type":300})
+					postTopicList({"cursor":"0","limit":20,"id_type":4,"sort_type":500,"topic_id":this.topicId})
 					.then(res=>{
 						this.list = res.data
 						this.page = res.cursor
