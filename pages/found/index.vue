@@ -2,10 +2,7 @@
 	<scroll-view
 		scroll-y 
 		class="view-pager-con body-layout-grey" 
-		@refresherrefresh="fresh" 
-		refresher-enabled
-		:refresher-triggered="loadStatus"
-		@scrolltolower="onreachBottom"
+		
 	>
 		<view class="comment-layout">
 			<view>
@@ -44,6 +41,13 @@
 		created() {
 			this.fresh()
 		},
+		onPullDownRefresh(){
+			console.log('页面下拉刷新')
+			this.fresh()
+		},
+		onReachBottom(){
+			this.onreachBottom()
+		},
 		data(){
 			return {
 				list:[],
@@ -63,22 +67,16 @@
 			},
 			// 刷新
 			fresh(){
-				if(this.loadStatus === false){
-					this.loadStatus = true
+				console.log('下拉刷新')
+				postList({"cursor":"0","limit":20,"id_type":2,"client_type":2606,"sort_type":200})
+				.then(res=>{
+					this.list = res.data
+					this.page = res.cursor
+				})
+				.then(res=>{
+					uni.stopPullDownRefresh()
 					
-					console.log('下拉刷新')
-					postList({"cursor":"0","limit":20,"id_type":2,"client_type":2606,"sort_type":200})
-					.then(res=>{
-						this.list = res.data
-						this.page = res.cursor
-					})
-					.then(res=>{
-						setTimeout(()=>{
-							this.loadStatus = false
-						},1000)
-						
-					})
-				}
+				})
 			},
 		}
 	}
