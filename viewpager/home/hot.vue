@@ -65,7 +65,8 @@
 				console.log('加载更多')
 				const list = this.articleList
 				// 文章列表
-				postList({"id_type":2,"client_type":2606,"cursor":this.articlePage,"limit":20,"sort_type":this.currentTagId}).then(res=>{this.articleList = list.concat(res.data);this.articlePage=res.cursor;console.log('数据',res.data)})
+				postList({"id_type":2,"client_type":2606,"cursor":this.articlePage,"limit":20,"sort_type":this.currentTagId})
+				.then(res=>{this.articleList = list.concat(res.data);this.articlePage=res.cursor;console.log('数据',res.data)})
 			},
 			// 刷新
 			fresh(){
@@ -74,7 +75,7 @@
 					
 					console.log('下拉刷新')
 					postList({"id_type":2,"client_type":2606,"cursor":"0","limit":20,"sort_type":this.currentTagId}).
-					then(res=>{this.articleList = res.data}).
+					then(res=>{this.articleList = res.data;this.articlePage=res.cursor;}).
 					then(res=>{
 						setTimeout(()=>{
 							this.loadStatus = false

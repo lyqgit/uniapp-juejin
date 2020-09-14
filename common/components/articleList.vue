@@ -5,7 +5,7 @@
 				<view class="article-user">
 					<image lazy-load :src="item.item_info.author_user_info.avatar_large" mode="aspectFit"></image>
 					<text class="user-name">{{item.item_info.author_user_info.user_name}}</text>
-					<text class="user-tag">{{item.item_info.tags.map(item=>item.tag_name).join('/')}}</text>
+					<text class="user-tag">{{item.item_info.tags.slice(0,2).map(item=>item.tag_name).join('/')}}</text>
 				</view>
 				<view class="article-content-con">
 					<view class="article-content">
