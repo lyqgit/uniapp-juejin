@@ -1,6 +1,6 @@
 <template>
 	<scroll-view scroll-x class="tag-layout">
-		<view @click="childSelect(item.id)" :class="[item.id === currentTag?'tag selected':'tag unselected']" v-for="item in tags" :key="item.id">{{item.name||item.tag_name}}</view>
+		<view @click="childSelect(item.tag_id)" :class="[item.tag_id === currentTag?'tag selected':'tag unselected']" v-for="item in tags" :key="item.id">{{item.name||item.tag_name}}</view>
 	</scroll-view>
 </template>
 

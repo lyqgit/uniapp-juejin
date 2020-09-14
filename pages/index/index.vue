@@ -88,7 +88,7 @@
 					const temp = {name:item.category.category_name,ownerKey:index+3}
 					this.list.push(temp)
 					item.ownerKey=index+3
-					item.hot_tags.unshift({id:0,tag_name:'全部'})
+					item.hot_tags.unshift({id:0,tag_name:'全部',tag_id:0})
 				})
 				console.log(tags)
 				return this.$store.state.tag.list

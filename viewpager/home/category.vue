@@ -10,7 +10,7 @@
 	>
 		<view>
 			<headerTag :tags="hotTags" :currentTag="currentTagId" @select="selectTag"></headerTag>
-			<articleList :list="articleList"></articleList>
+			<articleListNoAd :list="articleList"></articleListNoAd>
 		</view>
 	</scroll-view>
 </template>
@@ -18,13 +18,13 @@
 <script>
 	import scrollHeader from '../../common/minix/scrollHeader'
 	import headerTag from './components/headerTag.vue'
-	import articleList from '../../common/components/articleList.vue'
-	import { postList } from '../../services/recommendApi/recommendAllFeed'
+	import articleListNoAd from '../../common/components/articleListNoAd.vue'
+	import { postCateTagList as postList } from '../../services/recommendApi/recommendAllFeed'
 	export default{
 		name:'homeCategory',
 		components:{
 			headerTag,
-			articleList,
+			articleListNoAd,
 		},
 		props:['hotTags','cateId'],
 		mixins:[scrollHeader],
@@ -41,6 +41,7 @@
 		},
 		methods:{
 			selectTag(tagId){
+				console.log(tagId)
 				this.currentTagId = tagId
 			},
 			// scroll-view到底部加载更多
