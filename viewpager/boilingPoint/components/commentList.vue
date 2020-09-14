@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<view v-for="item in list">
+		<view v-for="item in list" :key="item.msg_id">
 			<division></division>
 			<view class="comment-layout">
 				<view class="header">
@@ -13,7 +13,7 @@
 				<view style="margin-top: 30rpx;">
 					<view class="content">{{item.msg_Info.content}}</view>
 					<view class="content-img" v-if="item.msg_Info.pic_list.length>0">
-						<image lazy-load :src="itemA" :key="itemA" mode="aspectFill" v-for="itemA in item.msg_Info.pic_list"></image>
+						<image style="margin-right: 20rpx;" lazy-load :src="itemA" :key="itemA" mode="aspectFill" v-for="itemA in item.msg_Info.pic_list"></image>
 					</view>
 				</view>
 				
