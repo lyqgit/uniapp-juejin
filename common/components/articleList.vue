@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<view class="articleList-layout" v-for="(item,index) in list" :key="index" >
+		<view class="articleList-layout" @click="goToDetail(item.item_info.article_info.article_id,item.item_info.author_user_info.user_id,item.item_info.tags.slice(0,2).map(itemA=>itemA.tag_id))" v-for="(item,index) in list" :key="index" >
 			<view v-if="item.item_type&&item.item_type === 2">
 				<view class="article-user">
 					<image lazy-load :src="item.item_info.author_user_info.avatar_large" mode="aspectFit"></image>
@@ -17,7 +17,7 @@
 				<view class="article-count">
 					<view class="fabulous">
 						<iconfont :icon="fabulous"></iconfont>
-						<text class="count">{{item.item_info.article_info.collect_count}}</text>
+						<text class="count">{{item.item_info.article_info.digg_count}}</text>
 					</view>
 					<view class="fabulous">
 						<iconfont :icon="msg"></iconfont>
@@ -51,6 +51,14 @@
 			return {
 				fabulous:'\ue604',
 				msg:'\ue61e',
+			}
+		},
+		methods:{
+			goToDetail(id,userId,tagId){
+				const tag = tagId.join()
+				uni.navigateTo({
+					url:`/pages/detail/articleDetail?id=${id}&userId=${userId}&tagId=${tag}`
+				})
 			}
 		}
 	}

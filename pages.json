@@ -26,7 +26,12 @@
 			"style": {
 				"navigationStyle": "custom",
 				"enablePullDownRefresh":true
-				
+			}
+		},
+		{
+			"path": "pages/detail/articleDetail",
+			"style": {
+				"navigationStyle": "custom"
 			}
 		},
 		{

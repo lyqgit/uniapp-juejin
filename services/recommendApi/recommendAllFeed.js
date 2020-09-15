@@ -4,6 +4,11 @@ export async function postList(params){
 	return post('/recommend_api/v1/article/recommend_all_feed',params)
 }
 
+// 相关文章详情
+export async function postRelativeList(params){
+	return post('/recommend_api/v1/article/recommend_article_detail_feed',params)
+}
+
 export async function postCateTagList(params){
 	return post('/recommend_api/v1/article/recommend_cate_tag_feed',params)
 }

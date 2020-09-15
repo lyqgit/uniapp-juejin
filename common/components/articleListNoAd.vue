@@ -16,7 +16,7 @@
 			<view class="article-count">
 				<view class="fabulous">
 					<iconfont :icon="fabulous"></iconfont>
-					<text class="count">{{item.article_info.collect_count}}</text>
+					<text class="count">{{item.article_info.digg_count}}</text>
 				</view>
 				<view class="fabulous">
 					<iconfont :icon="msg"></iconfont>
