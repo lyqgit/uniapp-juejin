@@ -29,7 +29,7 @@ class Request {
 			return null
 		}
 		uni.showLoading({
-			title:"请求中"
+			title:"网络拉取中"
 		})
 		
 		return new Promise((resolve, reject)=>{

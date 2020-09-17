@@ -63,8 +63,16 @@
 		},
 		onLoad(option) {
 			const id = option.id
+			
+			if(!id){
+				uni.switchTab({
+					url:'/pages/index/index'
+				})
+				return
+			}
 			const userId = option.userId
 			const tagId = option.tagId.split(',')
+			
 			console.log(id)
 			console.log(userId)
 			console.log(tagId)
