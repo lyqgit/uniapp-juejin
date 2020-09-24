@@ -106,7 +106,7 @@
 			}
 			.content{
 				width: 100%;
-				font-size: 20rpx;
+				font-size: 24rpx;
 				/* #ifdef APP-PLUS */
 				margin-top: 10rpx;
 				/* #endif */

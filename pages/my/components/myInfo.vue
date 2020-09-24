@@ -22,12 +22,13 @@
 	}
 	.con-layout{
 		display: flex;
+		align-items: center;
 		justify-content: flex-start;
 		padding: 35rpx;
 		.title{
 			flex: 1;
 			padding-left: 35rpx;
-			font-size: 20rpx;
+			font-size: 26rpx;
 		}
 	}
 	.bottom-border{

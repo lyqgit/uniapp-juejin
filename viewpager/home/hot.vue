@@ -32,19 +32,19 @@
 				currentTagId:0,
 				hotTags:[
 					{
-						id:3,
+						tag_id:3,
 						name:'3日之内'
 					},
 					{
-						id:7,
+						tag_id:7,
 						name:'7日之内'
 					},
 					{
-						id:30,
+						tag_id:30,
 						name:'30日之内'
 					},
 					{
-						id:0,
+						tag_id:0,
 						name:'全部'
 					}
 				],
