@@ -79,6 +79,7 @@
 		>image{
 			width: 50rpx;
 			height: 50rpx;
+			border-radius: 25rpx;
 		}
 		.user-name{
 			font-size: 20rpx;

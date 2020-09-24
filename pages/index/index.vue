@@ -12,8 +12,8 @@
 				</view>
 			</view>
 		</view>
-		<view class="tab-layout">
-			<u-tabs-swiper class="bottom-shadow" inactive-color="#9B9B9B" active-color="#0076FF" ref="uTabs" :list="list" :current="current"  @change="tabsChange" :is-scroll="true"></u-tabs-swiper>
+		<view class="tab-layout bottom-shadow">
+			<u-tabs-swiper inactive-color="#9B9B9B" active-color="#0076FF" ref="uTabs" :list="list" :current="current"  @change="tabsChange" :is-scroll="true"></u-tabs-swiper>
 		</view>
 		<view class="view-pager">
 			<swiper style="height: 100%;" :current="swiperCurrent" @transition="transition" @animationfinish="animationfinish">
@@ -177,7 +177,8 @@
 	}
 	
 	.bottom-shadow{
-		// box-shadow: 0 5rpx 10rpx #000000 inset;
+		box-shadow: 0px 6px 10px -14px #000;
+		z-index: 20;
 	}
 	
 	.swiper-item{
