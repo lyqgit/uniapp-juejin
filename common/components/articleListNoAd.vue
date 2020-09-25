@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<view class="articleList-layout" v-for="(item,index) in list" :key="index" >
+		<view class="articleList-layout" @click="goToDetail(item.article_info.article_id,item.author_user_info.user_id,item.tags.slice(0,2).map(itemA=>itemA.tag_id))" v-for="(item,index) in list" :key="index" >
 			<view class="article-user">
 				<image lazy-load :src="item.author_user_info.avatar_large" mode="aspectFit"></image>
 				<text class="user-name">{{item.author_user_info.user_name}}</text>
@@ -35,6 +35,14 @@
 			return {
 				fabulous:'\ue604',
 				msg:'\ue61e',
+			}
+		},
+		methods:{
+			goToDetail(id,userId,tagId){
+				const tag = tagId.join()
+				uni.navigateTo({
+					url:`/pages/detail/articleDetail?id=${id}&userId=${userId}&tagId=${tag}`
+				})
 			}
 		}
 	}
@@ -82,7 +90,7 @@
 			}
 			.content{
 				width: 100%;
-				font-size: 20rpx;
+				font-size: 24rpx;
 				/* #ifdef APP-PLUS */
 				margin-top: 10rpx;
 				/* #endif */

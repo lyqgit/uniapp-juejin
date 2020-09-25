@@ -1,6 +1,6 @@
 <template>
-	<scroll-view
-		scroll-y 
+	<view
+		
 		class="view-pager-con body-layout-grey" 
 		
 	>
@@ -23,7 +23,7 @@
 			</view>
 			<articleList class="hotTitleMargin" :list="list"></articleList>
 		</view>
-	</scroll-view>
+	</view>
 </template>
 
 <script>
@@ -63,7 +63,8 @@
 				console.log('加载更多')
 				const list = this.list
 				// 文章列表
-				postList({"cursor":this.page,"limit":20,"id_type":2,"client_type":2606,"sort_type":200}).then(res=>{this.list = list.concat(res.data);this.page=res.cursor;console.log('数据',res.data)})
+				postList({"cursor":this.page,"limit":20,"id_type":2,"client_type":2606,"sort_type":200})
+				.then(res=>{this.list = list.concat(res.data);this.page=res.cursor;console.log('数据',res.data)})
 			},
 			// 刷新
 			fresh(){

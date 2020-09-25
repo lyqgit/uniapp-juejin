@@ -182,6 +182,7 @@
 		line-height: 100rpx;
 		text-align: center;
 		color: $uni-bg-color;
+		box-shadow: 0px 6px 16px -6px #000;
 	}
 	
 	.home-layout{
