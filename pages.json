@@ -31,7 +31,8 @@
 		{
 			"path": "pages/detail/articleDetail",
 			"style": {
-				"navigationStyle": "custom"
+				"navigationBarTitleText": "详情",
+				"navigationBarBackgroundColor":"#FFFFFF"
 			}
 		},
 		{
@@ -49,7 +50,6 @@
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationStyle": "custom",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
 	},

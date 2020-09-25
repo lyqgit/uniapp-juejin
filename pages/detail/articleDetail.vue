@@ -1,6 +1,7 @@
 <template>
 	<view v-if="!!detail.author_user_info" class="detail-layout">
-		<view class="header">
+		<web-view :webview-styles="webviewStyles" :src="detail.article_info.content" class="content"></web-view>
+		<!-- <view class="header">
 			<view class="left" @click="goBack">
 				<iconfont :icon="icon.leftArrow" style="color: #007FFF;"></iconfont>
 			</view>
@@ -23,14 +24,13 @@
 		<scroll-view scroll-y="true" class="info">
 			<view>
 				<view class="user-detail"></view>
-				<web-view :src="detail.article_info.content" class="content"></web-view>
 				<articleDetailTag></articleDetailTag>
 				<view class="article-count"></view>
 				<view class="relative-article"></view>
 				<view class="comment-list"></view>
 			</view>
 		</scroll-view>
-		<articleDetailFooter :diggCount="detail.article_info.digg_count" :commentCount="detail.article_info.comment_count"></articleDetailFooter>
+		<articleDetailFooter :diggCount="detail.article_info.digg_count" :commentCount="detail.article_info.comment_count"></articleDetailFooter> -->
 	</view>
 </template>
 
@@ -55,6 +55,11 @@
 					plus:'\ue626',
 					dianzan:'\ue604',
 					msg:'\ue61e',
+				},
+				webviewStyles: {
+						 progress: {
+								color: '#FF3333'
+						}
 				},
 				detail:{},
 				commentList:[],

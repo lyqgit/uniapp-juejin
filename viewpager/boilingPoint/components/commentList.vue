@@ -104,8 +104,11 @@
 		.btn{
 			font-size: 24rpx;
 			color: $custom-font-color-des;
+			line-height: 1.5;
 			>text{
 				margin-left: 15rpx;
+				vertical-align: middle;
+				font-size: inherit;
 			}
 		}
 	}

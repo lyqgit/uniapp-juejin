@@ -117,12 +117,13 @@
 		margin-top: 30rpx;
 		.fabulous{
 			font-size: 20rpx;
+			line-height: 1.5;
 			&:nth-of-type(2){
 				margin-left: 50rpx;
 			}
 			>.count{
 				margin-left: 10rpx;
-				vertical-align: top;
+				vertical-align: middle;
 			}
 		}
 	}
