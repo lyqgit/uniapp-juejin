@@ -32,11 +32,31 @@
 			"path": "pages/detail/articleDetail",
 			"style": {
 				"navigationBarTitleText": "详情",
-				"navigationBarBackgroundColor":"#FFFFFF"
+				"navigationBarBackgroundColor":"#FFFFFF",
+				"app-plus":{
+					"titleNView":{
+						"buttons":[
+							{
+								"index":0,
+								"text":"评论",
+								"fontSize":"26rpx",
+								"float":"right",
+								"width":"60rpx"
+							}
+						]
+					}
+					
+				}
 			}
 		},
 		{
 			"path": "pages/my/index",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/comment/index",
 			"style": {
 				"navigationStyle": "custom"
 			}

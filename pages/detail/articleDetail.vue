@@ -36,16 +36,14 @@
 
 <script>
 	import { postArticleDetail } from '../../services/contentApi'
-	import { postCommentList } from '../../services/interactApi'
+	
 	import { postRelativeList } from '../../services/recommendApi/recommendAllFeed.js'
 	import smallFont from '../../common/components/smallFont.vue'
-	import articleDetailFooter from './components/footer.vue'
 	import articleDetailTag from './components/tags.vue'
 	export default {
 		name:'articleDetail',
 		components:{
 			smallFont,
-			articleDetailFooter,
 			articleDetailTag
 		},
 		data(){
@@ -62,8 +60,9 @@
 						}
 				},
 				detail:{},
-				commentList:[],
 				relativeList:[],
+				showComment:false,
+				routeParams:{}
 			}
 		},
 		onLoad(option) {
@@ -81,8 +80,12 @@
 			console.log(id)
 			console.log(userId)
 			console.log(tagId)
+			this.routeParams = {
+				id,
+				userId,
+				tagId
+			}
 			this.loadArticleDetail(id)
-			this.loadCommentList(id)
 			this.loadRelativeList(id,userId,tagId)
 		},
 		methods:{
@@ -94,16 +97,21 @@
 				postArticleDetail({"article_id":articleId,"client_type":2606})
 				.then(res=>this.detail = res.data)
 			},
-			loadCommentList(articleId){
-				// 获取评论列表
-				postCommentList({"cursor":"0","limit":20,"client_type":2606,"item_id":articleId,"item_type":2})
-				.then(res=>this.commentList = res.data)
-			},
 			loadRelativeList(articleId,userId,tagId){
 				// 获取评论列表
 				postRelativeList({"id_type":2,"client_type":2606,"cursor":"0","limit":20,"user_id":userId,"item_id":articleId,"tag_ids":tagId})
 				.then(res=>this.relativeList = res.data)
 			},
+			// 点击原生导航栏
+			onNavigationBarButtonTap(e){
+				if(e.index == 0){
+					// 评论
+					this.showComment = true
+					uni.navigateTo({
+						url:`/pages/comment/index?id=${this.routeParams.id}`
+					})
+				}
+			}
 		}
 	}
 </script>
