@@ -58,7 +58,7 @@
 		{
 			"path": "pages/comment/index",
 			"style": {
-				"navigationStyle": "custom"
+				"navigationBarTitleText": "评论"
 			}
 		},
 		{

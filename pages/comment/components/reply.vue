@@ -3,7 +3,6 @@
 		<text class="user-name">{{username}}</text>
 		<text class="user-name" v-if="isAuthor">(作者)</text>
 		<smallFont v-if="level>0" color="#8CDBF4" :text="'Lv'+level"></smallFont>
-		<text>:</text>
 	</view>
 </template>
 
