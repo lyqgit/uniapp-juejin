@@ -58,7 +58,15 @@
 		{
 			"path": "pages/comment/index",
 			"style": {
-				"navigationBarTitleText": "评论"
+				"navigationBarTitleText": "评论",
+				"navigationBarBackgroundColor":"#FFFFFF"
+			}
+		},
+		{
+			"path": "pages/reply/index",
+			"style": {
+				"navigationBarTitleText": "回复列表",
+				"navigationBarBackgroundColor":"#FFFFFF"
 			}
 		},
 		{

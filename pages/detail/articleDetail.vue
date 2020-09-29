@@ -108,7 +108,7 @@
 					// 评论
 					this.showComment = true
 					uni.navigateTo({
-						url:`/pages/comment/index?id=${this.routeParams.id}`
+						url:`/pages/comment/index?id=${this.routeParams.id}&digg_count=${this.detail.article_info.digg_count}&comment_count=${this.detail.article_info.comment_count}`
 					})
 				}
 			}
