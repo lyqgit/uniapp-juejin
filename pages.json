@@ -16,6 +16,12 @@
 			}
 		},
 		{
+			"path": "pages/boilingPointDetail/index",
+			"style": {
+				"navigationBarTitleText": "沸点详情"
+			}
+		},
+		{
 			"path": "pages/booklet/index",
 			"style": {
 				"navigationStyle": "custom"
