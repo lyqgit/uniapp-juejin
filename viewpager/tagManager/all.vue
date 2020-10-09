@@ -11,6 +11,7 @@
 			<tagFollowItem 
 			v-for="item in list" 
 			:key="item.tag_id"
+			:tagId="item.tag_id"
 			:img="item.tag.icon"
 			:title="item.tag.tag_name"
 			:postArticleCount="item.tag.post_article_count"
