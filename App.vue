@@ -34,4 +34,8 @@
 	.body-layout-grey{
 		background-color: #EFF2F5;
 	}
+	
+	.body-layout-white{
+		background-color: #FFFFFF;
+	}
 </style>

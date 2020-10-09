@@ -76,6 +76,12 @@
 			}
 		},
 		{
+			"path": "pages/tagManager/index",
+			"style": {
+				"navigationBarTitleText": "标签管理"
+			}
+		},
+		{
 			"path": "pages/login/index",
 			"style": {
 				"navigationStyle": "custom"

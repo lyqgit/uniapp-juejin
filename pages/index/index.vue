@@ -1,6 +1,6 @@
 <template>
 	<view class="home-layout">
-		<view id="home-header" :style="{height:headerHeight}">
+		<view id="home-header" @click="goToTagManager" :style="{height:headerHeight}">
 			<view class="header" >
 				<view class="header-search">
 					<iconfont :icon="icon.search"></iconfont>
@@ -106,9 +106,15 @@
 				console.log("得到布局位置信息" + JSON.stringify(data));
 				console.log("节点离页面顶部的距离为" + data.top);
 				this.$store.commit('header/setHeaderHeight',data.height+'px') 
+				this.$store.commit('header/setHeaderOriginHeight',data.height+'px') 
 			}).exec();
 		},
 		methods: {
+			goToTagManager(){
+				uni.navigateTo({
+					url:'/pages/tagManager/index'
+				})
+			},
 			categoryOwnerKey(num){
 				console.log(num)
 				return num+3
