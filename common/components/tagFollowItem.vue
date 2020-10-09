@@ -8,7 +8,7 @@
 			</view>
 			<view class="follow-btn bottom-shadow" @click="follow">+ 关注</view>
 		</view>
-		<division></division>
+		<division height="1px" style="background-color: #EFF2F5;"></division>
 	</view>
 </template>
 
