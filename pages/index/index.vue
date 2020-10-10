@@ -1,12 +1,12 @@
 <template>
 	<view class="home-layout">
-		<view id="home-header" @click="goToTagManager" :style="{height:headerHeight}">
+		<view id="home-header" :style="{height:headerHeight}">
 			<view class="header" >
-				<view class="header-search">
+				<view class="header-search" @click="goToSearch">
 					<iconfont :icon="icon.search"></iconfont>
 					<text style="margin-left: 20rpx;">搜索掘金</text>
 				</view>
-				<view class="header-setting">
+				<view class="header-setting" @click="goToTagManager">
 					<iconfont :icon="icon.setting"></iconfont>
 					<text style="margin-left:10rpx;">标签</text>
 				</view>
@@ -110,6 +110,11 @@
 			}).exec();
 		},
 		methods: {
+			goToSearch(){
+				uni.navigateTo({
+					url:'/pages/search/index'
+				})
+			},
 			goToTagManager(){
 				uni.navigateTo({
 					url:'/pages/tagManager/index'

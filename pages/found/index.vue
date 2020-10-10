@@ -5,7 +5,7 @@
 		
 	>
 		<view class="comment-layout">
-			<view>
+			<view @click="goToSearch">
 				<view class="header" >
 					<view class="header-search">
 						<iconfont :icon="search"></iconfont>
@@ -58,6 +58,11 @@
 			}
 		},
 		methods:{
+			goToSearch(){
+				uni.navigateTo({
+					url:'/pages/search/index'
+				})
+			},
 			// scroll-view到底部加载更多
 			onreachBottom() {
 				console.log('加载更多')

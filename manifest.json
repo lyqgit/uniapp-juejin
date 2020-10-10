@@ -1,7 +1,7 @@
 {
     "name" : "juejin",
     "appid" : "__UNI__DB5897A",
-    "description" : "",
+    "description" : "uniapp版掘金",
     "versionName" : "1.0.0",
     "versionCode" : 101,
     "transformPx" : false,
@@ -55,6 +55,22 @@
             /* SDK配置 */
             "sdkConfigs" : {
                 "ad" : {}
+            },
+            "icons" : {
+                "android" : {
+                    "hdpi" : "static/logo.png",
+                    "xhdpi" : "static/logo.png",
+                    "xxhdpi" : "static/logo.png",
+                    "xxxhdpi" : "static/logo.png"
+                }
+            },
+            "splashscreen" : {
+                "androidStyle" : "default",
+                "android" : {
+                    "hdpi" : "static/splash.png",
+                    "xhdpi" : "static/splash.png",
+                    "xxhdpi" : "static/splash.png"
+                }
             }
         }
     },

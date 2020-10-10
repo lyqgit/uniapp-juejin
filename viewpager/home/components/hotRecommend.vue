@@ -8,6 +8,7 @@
 				<iconfont :icon="rightArrow" style="vertical-align: middle;" ></iconfont>
 			</view>	
 		</view>
+		<division height="1px" style="background-color:#EFF2F5 ;"></division>
 		<view v-for="item in list" :key="item.item_info.article_info.article_id">
 			<view class="list-layout">
 				<view style="flex: 1;overflow: hidden; text-overflow: ellipsis;white-space: nowrap; ">
