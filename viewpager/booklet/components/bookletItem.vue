@@ -2,7 +2,7 @@
 	<view>
 		<view style="padding-top: 20rpx;" v-for="item in list" :key="item.booklet_id">
 			<view class="booklet-list">
-				<image lazy-load :src="item.base_info.cover_img" mode="aspectFill" class="left-img"></image>
+				<u-image lazy-load :src="item.base_info.cover_img" mode="aspectFill" width="150rpx" height="200rpx" border-radius="10rpx"></u-image>
 				<view class="content-layout">
 					<view class="title">{{item.base_info.title}}</view>
 					<view class="user-info">{{item.user_info.user_name}}<text style="background-color: #00ffff;color: #FFFFFF;border-radius: 10rpx;">lv{{item.user_info.level}}</text></view>

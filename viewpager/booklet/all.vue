@@ -37,7 +37,15 @@
 				console.log('加载更多')
 				const list = this.list
 				// 文章列表
-				postAllList({"category_id":"0","cursor":this.page,"limit":20}).then(res=>{this.list = list.concat(res.data);this.page=res.cursor;console.log('数据',res.data)})
+				postAllList({"category_id":"0","cursor":this.page,"limit":20}).then(res=>{
+					if(res.cursor == '0'){
+						uni.showToast({
+							title:'最后一页'
+						})
+						return;
+					}
+					this.list = list.concat(res.data);this.page=res.cursor;console.log('数据',res.data)
+				})
 			},
 			// 刷新
 			fresh(){
