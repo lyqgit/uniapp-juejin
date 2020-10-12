@@ -43,7 +43,7 @@
 			loadCommentList(articleId){
 				// 获取评论列表
 				postCommentList({"cursor":"0","limit":20,"client_type":2606,"item_id":articleId,"item_type":2})
-				.then(res=>{this.commentList = res.data;console.log(res.data)})
+				.then(res=>{this.commentList = res.data;})
 			}
 		}
 	}

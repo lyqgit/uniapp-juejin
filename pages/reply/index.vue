@@ -20,8 +20,7 @@
 		</view>
 		<replyListItem
 		v-for="item in list"
-		v-if="item.user_info"
-		:key="item.comment_id"
+		:key="item.reply_id"
 		:avatar_large="item.user_info.avatar_large"
 		:user_name="item.user_info.user_name"
 		:level="item.user_info.level"
@@ -56,6 +55,7 @@
 			}
 			this.loadPostCommentDetail(commentId)
 			this.loadPostReplyList(commentId,commentItemId)
+			console.log('评论id',commentId)
 		},
 		data(){
 			return {
