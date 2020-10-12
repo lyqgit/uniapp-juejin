@@ -10,7 +10,7 @@
 		<view class="bottom-border"></view>
 		<template v-if="type==0">
 			<view class="form-input">
-				<input type="text" name="username" placeholder-class="input-placeholder" v-model="username" placeholder="邮箱/手机号">
+				<input type="text" name="email" placeholder-class="input-placeholder" v-model="email" placeholder="邮箱/手机号">
 			</view>
 			<view class="bottom-border"></view>
 			<view class="form-input password-input">
@@ -27,16 +27,20 @@
 			<view class="bottom-border"></view>
 			<view class="form-input password-input">
 				<input :type="inputType" style="flex:1;border: none;font-size: 26rpx;outline: none;" name="yzm" v-model="yzm" placeholder-class="input-placeholder" placeholder="输入验证码">
-				<text :style="{color: lookColor,fontSize:'26rpx'}" @click.native="switchInputType">获取验证码</text>
+				<text :style="{color: lookColor,fontSize:'26rpx'}" @click="getYZM">获取验证码</text>
 			</view>
 			<view class="bottom-border" style="margin-bottom: 20rpx;"></view>
-			<view :class="[loginBg?'login-btn login-btn-active':'login-btn login-btn-unactive']">登录</view>
+			<view :class="[loginBg?'login-btn login-btn-active':'login-btn login-btn-unactive']" @click="login">登录</view>
 		</template>
 		<view class="other-login" @click="switchLogin">其他登录方式</view>
 	</view>
 </template>
 
 <script>
+	
+	import { createSecretKey } from '@/common/utils/passport'
+	import { postPassportUAP,postPassportCap,postCap } from '@/services/passportApi'
+	
 	export default {
 		name:'login',
 		data(){
@@ -44,8 +48,8 @@
 				arrow:'\ue65b',
 				look:'\ue60b',
 				lookColor:'#DFDFDF',
-				inputType:'text',
-				username:'',
+				inputType:'password',
+				email:'',
 				password:'',
 				mobile:'',
 				yzm:'',
@@ -54,7 +58,7 @@
 		},
 		computed:{
 			loginBg(){
-				if(this.username && this.password){
+				if((this.email && this.password && this.type == 0) || (this.mobile && this.yzm && this.type == 1)){
 					return true
 				}
 				return false
@@ -79,6 +83,28 @@
 				}else if(this.type == 0){
 					this.type = 1
 				}
+			},
+			login(){	//登录
+				switch(this.type){
+					case 0://用户名密码登录
+						postPassportUAP({account_sdk_source:'app',email:createSecretKey(this.email),password:this.password})
+						.then(res=>uni.showToast({
+							title:res.data.description
+						}))
+					break;
+					case 1:
+						postPassportCap({account_sdk_source:'app',mobile:createSecretKey(this.mobile),code:createSecretKey(this.yzm)})
+						.then(res=>uni.showToast({
+							title:res.data.description
+						}))
+					break
+				}
+			},
+			getYZM(){	// 获取验证码
+				postCap({account_sdk_source:'app',mobile:createSecretKey(this.mobile)})
+				.then(res=>uni.showToast({
+					title:res.data.description
+				}))
 			}
 		}
 	}
@@ -138,6 +164,7 @@
 	}
 	.login-btn-active{
 		background-color: $custom-font-color-blue;
+		color: #FFFFFF;
 	}
 	
 	.other-login{
