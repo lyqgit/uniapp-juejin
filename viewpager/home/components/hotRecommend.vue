@@ -1,6 +1,6 @@
 <template>
 	<view class="hotRecommend-layout">
-		<view class="hot-title">
+		<view class="hot-title" @click="goToListOfArticles">
 			<iconfont :icon="hotIcon" style="color: #FF4343;"></iconfont>
 			<text style="flex: 1;margin-left: 20rpx;">热门推荐</text>
 			<view>
@@ -30,6 +30,13 @@
 			return {
 				hotIcon:'\ue680',
 				rightArrow:'\ue655'
+			}
+		},
+		methods:{
+			goToListOfArticles(){
+				uni.navigateTo({
+					url:'/pages/listOfArticles/index'
+				})
 			}
 		}
 	}

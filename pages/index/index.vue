@@ -1,6 +1,6 @@
 <template>
 	<view class="home-layout">
-		<view id="home-header" :style="{height:headerHeight}">
+		<view id="home-header" :class="[$store.state.header.hideHeader?'header-animate header-move-top':'header-animate']">
 			<view class="header" >
 				<view class="header-search" @click="goToSearch">
 					<iconfont :icon="icon.search"></iconfont>
@@ -12,10 +12,10 @@
 				</view>
 			</view>
 		</view>
-		<view class="tab-layout bottom-shadow">
+		<view :class="[$store.state.header.hideHeader?'header-animate bottom-shadow':'header-animate header-top bottom-shadow']">
 			<u-tabs-swiper inactive-color="#9B9B9B" active-color="#0076FF" ref="uTabs" :list="list" :current="current"  @change="tabsChange" :is-scroll="true"></u-tabs-swiper>
 		</view>
-		<view class="view-pager">
+		<view :class="[$store.state.header.hideHeader?'header-animate view-pager':'header-animate viewpager-top view-pager']">
 			<swiper style="height: 100%;" :current="swiperCurrent" @transition="transition" @animationfinish="animationfinish">
 				<swiper-item class="swiper-item">
 					<viewpager :direct="true" :ownerKey="0" :currentKey="swiperCurrent">
@@ -162,7 +162,13 @@
 	}
 	
 	#home-header{
-		transition: all .5s ease;
+		width: 100%;
+		height: 100rpx;
+		position: fixed;
+		top:0;
+		left: 0;
+		z-index: 100;
+		background-color: #FFFFFF;
 	}
 	
 	.header{
@@ -199,4 +205,21 @@
 	.view-pager{
 		flex: 1;
 	}
+	
+	.header-animate{
+		transition: all .5s ease;
+	}
+	
+	.header-move-top{
+		transform: translateY(-100%);
+	}
+	
+	.header-top{
+		transform: translateY(100rpx);
+	}
+	
+	.viewpager-top{
+		padding-top: 100rpx;
+	}
+	
 </style>
