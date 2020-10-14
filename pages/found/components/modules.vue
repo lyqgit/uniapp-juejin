@@ -1,6 +1,6 @@
 <template>
 	<view class="modules-layout">
-		<view class="module-item">
+		<view class="module-item" @click="goToPage('/pages/listOfArticles/index')">
 			<iconfont :icon="icon.article" style="font-size: 50rpx;color: #7BC736;"></iconfont>
 			<view>文章榜</view>
 		</view>
@@ -20,8 +20,12 @@
 </template>
 
 <script>
+	
+	import minixRouter from '@/common/minix/router'
+	
 	export default{
 		name:'foundModules',
+		mixins:[minixRouter],
 		data(){
 			return {
 				icon:{
