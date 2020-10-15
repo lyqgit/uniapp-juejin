@@ -18,7 +18,7 @@
 				<iconfont :icon="look" :style="{color: lookColor}" @click.native="switchInputType"></iconfont>
 			</view>
 			<view class="bottom-border" style="margin-bottom: 20rpx;"></view>
-			<view :class="[loginBg?'login-btn login-btn-active':'login-btn login-btn-unactive']">登录</view>
+			<view :class="[loginBg?'login-btn login-btn-active':'login-btn login-btn-unactive']" @click="login">登录</view>
 		</template>
 		<template v-if="type==1">
 			<view class="form-input">
@@ -87,10 +87,29 @@
 			login(){	//登录
 				switch(this.type){
 					case 0://用户名密码登录
-						postPassportUAP({account_sdk_source:'app',email:createSecretKey(this.email),password:this.password})
-						.then(res=>uni.showToast({
-							title:res.data.description
-						}))
+						postPassportUAP({
+							account_sdk_source:'app',
+							mobile:createSecretKey(this.email),
+							password:createSecretKey(this.password),
+							account_sdk_source:'app',
+							auto_read:0,
+							mix_mode:1,
+							multi_login:1,
+							type:3731,
+							unbind_exist:35,
+							language:'zh',
+							os_api:'22',
+							build_serial:'88f3dc715d9187fc',
+							carrier:'CHINA MOBILE',
+							iid:1512536904579373,
+						})
+						.then(res=>{
+							uni.showToast({
+								title:res.message
+							})
+							
+							uni.setStorageSync('token',res.data.session_key);
+						})
 					break;
 					case 1:
 						postPassportCap({account_sdk_source:'app',mobile:createSecretKey(this.mobile),code:createSecretKey(this.yzm)})
@@ -101,7 +120,20 @@
 				}
 			},
 			getYZM(){	// 获取验证码
-				postCap({account_sdk_source:'app',mobile:createSecretKey(this.mobile)})
+				postCap({
+					account_sdk_source:'app',
+					mobile:createSecretKey(this.mobile),
+					auto_read:0,
+					mix_mode:1,
+					multi_login:1,
+					type:3731,
+					unbind_exist:35,
+					language:'zh',
+					os_api:'22',
+					build_serial:'88f3dc715d9187fc',
+					carrier:'CHINA MOBILE',
+					iid:1512536904579373,
+				})
 				.then(res=>uni.showToast({
 					title:res.data.description
 				}))

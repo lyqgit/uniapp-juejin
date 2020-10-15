@@ -1,19 +1,21 @@
 <template>
 	<view class="home-layout">
 		<view id="home-header" :class="[$store.state.header.hideHeader?'header-animate header-move-top':'header-animate']">
-			<view class="header" >
-				<view class="header-search" @click="goToSearch">
-					<iconfont :icon="icon.search"></iconfont>
-					<text style="margin-left: 20rpx;">搜索掘金</text>
-				</view>
-				<view class="header-setting" @click="goToTagManager">
-					<iconfont :icon="icon.setting"></iconfont>
-					<text style="margin-left:10rpx;">标签</text>
+			<view style="height: 90rpx;">
+				<view class="header" >
+					<view class="header-search" @click="goToSearch">
+						<iconfont :icon="icon.search" style="line-height: 1.5;"></iconfont>
+						<text style="margin-left: 20rpx;line-height: 1.5;vertical-align: middle;">搜索掘金</text>
+					</view>
+					<view class="header-setting" @click="goToTagManager">
+						<iconfont :icon="icon.setting"></iconfont>
+						<text style="margin-left:10rpx;">标签</text>
+					</view>
 				</view>
 			</view>
-		</view>
-		<view :class="[$store.state.header.hideHeader?'header-animate bottom-shadow':'header-animate header-top bottom-shadow']">
-			<u-tabs-swiper inactive-color="#9B9B9B" active-color="#0076FF" ref="uTabs" :list="list" :current="current"  @change="tabsChange" :is-scroll="true"></u-tabs-swiper>
+			<view class="bottom-shadow">
+				<u-tabs-swiper inactive-color="#9B9B9B" active-color="#0076FF" ref="uTabs" :list="list" :current="current"  @change="tabsChange" :is-scroll="true"></u-tabs-swiper>
+			</view>
 		</view>
 		<view :class="[$store.state.header.hideHeader?'header-animate view-pager':'header-animate viewpager-top view-pager']">
 			<swiper style="height: 100%;" :current="swiperCurrent" @transition="transition" @animationfinish="animationfinish">
@@ -163,7 +165,6 @@
 	
 	#home-header{
 		width: 100%;
-		height: 100rpx;
 		position: fixed;
 		top:0;
 		left: 0;
@@ -194,6 +195,7 @@
 	}
 	
 	.bottom-shadow{
+		height: 80rpx;
 		box-shadow: 0px 6px 10px -14px #000;
 		z-index: 20;
 	}
@@ -211,15 +213,11 @@
 	}
 	
 	.header-move-top{
-		transform: translateY(-100%);
-	}
-	
-	.header-top{
-		transform: translateY(100rpx);
+		transform: translateY(-100rpx);
 	}
 	
 	.viewpager-top{
-		padding-top: 100rpx;
+		padding-top: 170rpx;
 	}
 	
 </style>

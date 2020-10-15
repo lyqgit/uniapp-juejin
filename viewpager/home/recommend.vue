@@ -9,8 +9,8 @@
 		@scroll="scrollAnimate"
 	>
 		<view>
-			<division></division>
-			<loginTip></loginTip>
+			<division v-if="!$store.state.user.token"></division>
+			<loginTip v-if="!$store.state.user.token"></loginTip>
 			<division></division>
 			<hotRecommend :list="hotList"></hotRecommend>
 			<articleList :list="articleList"></articleList>
