@@ -18,7 +18,7 @@
 		{
 			"path": "pages/boilingPointDetail/index",
 			"style": {
-				"navigationBarTitleText": "沸点详情"
+				"navigationStyle": "custom"
 			}
 		},
 		{

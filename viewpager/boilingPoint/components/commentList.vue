@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<view v-for="item in list" :key="item.msg_id">
+		<view v-for="item in list" :key="item.msg_id" @click="goToPage(`/pages/boilingPointDetail/index?msgId=${item.msg_id}&topId=${item.topic.topic_id}`)">
 			<division></division>
 			<view class="comment-layout">
 				<view class="header">
@@ -38,10 +38,12 @@
 </template>
 
 <script>
+	import router from '@/common/minix/router'
 	
 	export default {
 		name:'commentList',
 		props:['list'],
+		mixins:[router],
 		data(){
 			return {
 				icon:{

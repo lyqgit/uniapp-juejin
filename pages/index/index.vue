@@ -8,8 +8,8 @@
 						<text style="margin-left: 20rpx;line-height: 1.5;vertical-align: middle;">搜索掘金</text>
 					</view>
 					<view class="header-setting" @click="goToTagManager">
-						<iconfont :icon="icon.setting"></iconfont>
-						<text style="margin-left:10rpx;">标签</text>
+						<iconfont :icon="icon.setting" style="line-height: 1.5;"></iconfont>
+						<text style="margin-left:10rpx;line-height: 1.5;vertical-align: middle;">标签</text>
 					</view>
 				</view>
 			</view>
