@@ -13,7 +13,7 @@
 				<view style="margin-top: 30rpx;">
 					<view class="content">{{item.msg_Info.content}}</view>
 					<view class="content-img" v-if="item.msg_Info.pic_list.length>0">
-						<image style="margin-right: 20rpx;" lazy-load :src="itemA" :key="itemA" mode="aspectFill" v-for="itemA in item.msg_Info.pic_list"></image>
+						<image @click.stop="showMaskImg(item.msg_Info.pic_list,index)" style="margin-right: 20rpx;" lazy-load :src="itemA" :key="itemA" mode="aspectFill" v-for="(itemA,index) in item.msg_Info.pic_list"></image>
 					</view>
 				</view>
 				
@@ -34,14 +34,19 @@
 				</view>
 			</view>
 		</view>
+		<swiperImg ref="maskImg"></swiperImg>
 	</view>
 </template>
 
 <script>
 	import router from '@/common/minix/router'
+	import swiperImg from '@/common/components/swiperImg'
 	
 	export default {
 		name:'commentList',
+		components:{
+			swiperImg
+		},
 		props:['list'],
 		mixins:[router],
 		data(){
@@ -50,7 +55,12 @@
 					 fabulous:'\ue604',
 					 msg:'\ue61e',
 					 share:'\ue608'
-				}
+				},
+			}
+		},
+		methods:{
+			showMaskImg(imgList,index){
+				this.$refs.maskImg.showImg(imgList,index)
 			}
 		}
 	}
@@ -93,6 +103,7 @@
 		>image{
 			width: 200rpx;
 			height: 200rpx;
+			border-radius: 10rpx;
 		}
 	}
 	.tag{

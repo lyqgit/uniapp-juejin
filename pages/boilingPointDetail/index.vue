@@ -27,7 +27,7 @@
 					<view style="margin-top: 30rpx;">
 						<view class="content">{{boilingDetail.msg_Info.content}}</view>
 						<view class="content-img" v-if="boilingDetail.msg_Info.pic_list.length>0">
-							<image style="margin-right: 20rpx;" lazy-load :src="itemA" :key="itemA" mode="aspectFill" v-for="itemA in boilingDetail.msg_Info.pic_list"></image>
+							<image @click.stop="showMaskImg(boilingDetail.msg_Info.pic_list,index)" style="margin-right: 20rpx;" lazy-load :src="itemA" :key="itemA" mode="aspectFill" v-for="(itemA,index) in boilingDetail.msg_Info.pic_list"></image>
 						</view>
 					</view>
 					<view class="tag" v-if="!!boilingDetail.topic.title">{{boilingDetail.topic.title}}</view>
@@ -43,6 +43,7 @@
 				<commentList :list="commentList" style="background-color: #FFFFFF;"></commentList>
 			</view>
 		</scroll-view>
+		<swiperImg ref="maskImg"></swiperImg>
 	</view>
 </template>
 
@@ -54,13 +55,15 @@
 	import navigation from './components/navigation'
 	import commentList from '@/common/components/commentList'
 	import banner from '@/viewpager/boilingPoint/components/banner.vue'
+	import swiperImg from '@/common/components/swiperImg'
 	
 	export default {
 		name:'boilingPointDetail',
 		components:{
 			navigation,
 			commentList,
-			banner
+			banner,
+			swiperImg
 		},
 		onLoad(option) {
 			const msgId = option.msgId
@@ -94,6 +97,9 @@
 			}
 		},
 		methods:{
+			showMaskImg(imgList,index){
+				this.$refs.maskImg.showImg(imgList,index)
+			},
 			scrollHeaderAnimate(event){
 				if(event.detail.deltaY < 0){
 					this.headerTopTransilate = true

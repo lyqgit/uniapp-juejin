@@ -109,6 +109,7 @@
 							})
 							
 							uni.setStorageSync('token',res.data.session_key);
+							this.$store.commit('user/setToken',res.data.session_key)
 						})
 					break;
 					case 1:
