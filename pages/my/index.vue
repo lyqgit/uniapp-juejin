@@ -69,9 +69,13 @@
 				console.log('跳转到个人信息主页')
 			},
 			fresh(){
-				getUserInfo({
-					user_id:this.$store.state.user.userInfo.user_id
-				}).then(res=>this.myInfo = res.data)
+				// 登录后再获取信息
+				if(this.isLogin){
+					getUserInfo({
+						user_id:this.$store.state.user.userInfo.user_id
+					}).then(res=>this.myInfo = res.data)
+				}
+				
 			}
 		},
 		computed:{
