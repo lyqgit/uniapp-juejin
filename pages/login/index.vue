@@ -39,10 +39,13 @@
 <script>
 	
 	import { createSecretKey } from '@/common/utils/passport'
+	import cookieJs from '@/common/utils/js.cookie-2.2.1.min'
 	import { postPassportUAP,postPassportCap,postCap } from '@/services/passportApi'
+	import router from '@/common/minix/router'
 	
 	export default {
 		name:'login',
+		mixins:[router],
 		data(){
 			return {
 				arrow:'\ue65b',
@@ -108,8 +111,10 @@
 								title:res.message
 							})
 							
-							uni.setStorageSync('token',res.data.session_key);
-							this.$store.commit('user/setToken',res.data.session_key)
+							uni.setStorageSync('userInfo',JSON.stringify(res.data));
+							this.$store.commit('user/setUserInfo',res.data)
+							cookieJs.set('passport_csrf_token',res.data.session_key)
+							this.replaceToPage('/pages/my/index')
 						})
 					break;
 					case 1:

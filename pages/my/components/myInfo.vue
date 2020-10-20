@@ -1,17 +1,18 @@
 <template>
-	<div class="myInfo-con">
-		<div class="con-layout">
+	<view class="myInfo-con">
+		<view class="con-layout">
 			<slot></slot>
 			<text class="title">{{title}}</text>
-		</div>
+			<text class="des">{{count}}</text>
+		</view>
 		<view class="bottom-border"></view>
-	</div>
+	</view>
 </template>
 
 <script>
 	export default{
 		name:'myInfo',
-		props:['title']
+		props:['title','count']
 	}
 </script>
 
@@ -29,6 +30,9 @@
 			flex: 1;
 			padding-left: 35rpx;
 			font-size: 26rpx;
+		}
+		.des{
+			@include title(20rpx)
 		}
 	}
 	.bottom-border{

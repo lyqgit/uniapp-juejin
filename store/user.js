@@ -1,11 +1,11 @@
 export default {
 	namespaced:true,
 	state:{
-		token:''
+		userInfo:uni.getStorageSync('userInfo')?JSON.parse(uni.getStorageSync('userInfo')):{}
 	},
 	mutations:{
-		setToken(state,payload){
-			state.token = payload
+		setUserInfo(state,payload){
+			state.userInfo = payload
 		},
 	}
 }
