@@ -38,7 +38,7 @@
 	import searchTagItem from '@/common/components/searchTagItem.vue'
 	import searchUserItem from '@/common/components/searchUserItem.vue'
 	import articleListNoAd from '@/common/components/articleListNoAd.vue'
-	import {throttle} from '@/common/utils/func'
+	import {debounce} from '@/common/utils/func'
 	
 	export default {
 		name:'allTag',
@@ -96,9 +96,9 @@
 			},
 		},
 		watch:{
-			keyword:function(){
-				throttle(this.fresh,1000)
-			}
+			keyword:debounce(function(){
+				this.fresh()
+			},1000)
 		}
 	}
 </script>

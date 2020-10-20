@@ -2,7 +2,7 @@
 	<view>
 		<u-mask :show="show" @click="hideImg">
 			<swiper class="swiper" :current="current">
-				<swiper-item v-for="item in list" style="display: flex;align-items: center;width: 100%;height: 100%;">
+				<swiper-item v-for="item in list" :key="item" style="display: flex;align-items: center;width: 100%;height: 100%;">
 					<image style="width: 100%;" mode="widthFix" :src="item"></image>
 				</swiper-item>
 			</swiper>
