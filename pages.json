@@ -4,35 +4,51 @@
 	},
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
-			"path": "pages/index/index",
+			"path": "pages/index/index"
+			// #ifndef MP-WEIXIN
+			,
 			"style": {
 				"navigationStyle": "custom"
 			}
+			// #endif
 		},
 		{
-			"path": "pages/boilingPoint/index",
+			"path": "pages/boilingPoint/index"
+			// #ifndef MP-WEIXIN
+			,
 			"style": {
 				"navigationStyle": "custom"
 			}
+			// #endif
 		},
 		{
-			"path": "pages/boilingPointDetail/index",
+			"path": "pages/boilingPointDetail/index"
+			// #ifndef MP-WEIXIN
+			,
 			"style": {
 				"navigationStyle": "custom"
 			}
+			// #endif
 		},
 		{
-			"path": "pages/booklet/index",
+			"path": "pages/booklet/index"
+			// #ifndef MP-WEIXIN
+			,
 			"style": {
 				"navigationStyle": "custom"
 			}
+			// #endif
 		},
 		{
-			"path": "pages/found/index",
+			"path": "pages/found/index"
+			// #ifndef MP-WEIXIN
+			,
 			"style": {
 				"navigationStyle": "custom",
 				"enablePullDownRefresh":true
 			}
+			// #endif
+			
 		},
 		{
 			"path": "pages/detail/articleDetail",
@@ -56,16 +72,22 @@
 			}
 		},
 		{
-			"path": "pages/my/index",
+			"path": "pages/my/index"
+			// #ifndef MP-WEIXIN
+			,
 			"style": {
 				"navigationStyle": "custom"
 			}
+			// #endif
 		},
 		{
-			"path": "pages/search/index",
+			"path": "pages/search/index"
+			// #ifndef MP-WEIXIN
+			,
 			"style": {
 				"navigationStyle": "custom"
 			}
+			// #endif
 		},
 		{
 			"path": "pages/comment/index",
@@ -88,16 +110,22 @@
 			}
 		},
 		{
-			"path": "pages/login/index",
+			"path": "pages/login/index"
+			// #ifndef MP-WEIXIN
+			,
 			"style": {
 				"navigationStyle": "custom"
 			}
+			// #endif
 		},
 		{
-			"path": "pages/listOfArticles/index",
+			"path": "pages/listOfArticles/index"
+			// #ifndef MP-WEIXIN
+			,
 			"style": {
 				"navigationStyle": "custom"
 			}
+			// #endif
 		}
     ],
 	"globalStyle": {

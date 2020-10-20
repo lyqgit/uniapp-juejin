@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<view :key="item.comment_id || item.msg_id" v-for="item in list">
+		<view :key="item.comment_id" v-for="item in list">
 			<view class="comment-layout">
 				<view class="header">
 					<image :src="item.user_info.avatar_large" mode="aspectFill"></image>

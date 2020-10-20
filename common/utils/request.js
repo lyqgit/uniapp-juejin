@@ -89,6 +89,20 @@ class Request {
 	}
 	//#endif
 	
+	//#ifdef MP-WEIXIN
+	get=(url,data,header)=>{
+		return this.request(url,"GET",data,header)
+	}
+	
+	post=(url,data,header)=>{
+		return this.request(url,"POST",data,header)
+	}
+	
+	put=(url,data,header)=>{
+		return this.request(url,"PUT",data,header)
+	}
+	//#endif
+	
 }
 
 //#ifdef H5
@@ -101,6 +115,15 @@ const instance = new Request('',{
 
 //#ifdef APP-PLUS
 // app端
+const instance = new Request('https://apinew.juejin.im',{
+	'Content-Type':'application/json',
+	'X-Agent':'Juejin/xiaomi/Redmi Note 7 Pro Android/9 Juejin/Android/5.9.3',
+	'X-Juejin-Src':'android',
+})
+//#endif
+
+//#ifdef MP-WEIXIN
+// 微信小程序端
 const instance = new Request('https://apinew.juejin.im',{
 	'Content-Type':'application/json',
 	'X-Agent':'Juejin/xiaomi/Redmi Note 7 Pro Android/9 Juejin/Android/5.9.3',

@@ -2,8 +2,8 @@
 	<view class="container-layout">
 		<headerComponent :class="[hideHeader?'header-animate header-move-top':'header-animate']" ></headerComponent>
 		<tabAndViewPager :class="[hideHeader?'header-animate':'header-animate header-top']" :categoryList="categoryList" :list="list">
-			<template v-slot="item">
-				<category :cateId="item.item.category_id" @hideHeader="setHideHeader"></category>
+			<template v-slot="{item}">
+				<category :cateId="item.category_id" @hideHeader="setHideHeader"></category>
 			</template>
 		</tabAndViewPager>
 	</view>
