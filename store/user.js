@@ -1,7 +1,8 @@
 export default {
 	namespaced:true,
 	state:{
-		userInfo:uni.getStorageSync('userInfo')?JSON.parse(uni.getStorageSync('userInfo')):{}
+		userInfo:uni.getStorageSync('userInfo')?JSON.parse(uni.getStorageSync('userInfo')):{},
+		isLogin:uni.getStorageSync('userInfo')?true:false
 	},
 	mutations:{
 		setUserInfo(state,payload){

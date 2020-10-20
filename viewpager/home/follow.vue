@@ -3,13 +3,13 @@
 		scroll-y
 		class="view-pager-con body-layout-grey" 
 		@refresherrefresh="fresh" 
-		refresher-enabled
+		:refresher-enabled="isLogin"
 		:refresher-triggered="loadStatus"
 		@scrolltolower="onreachBottom"
 		@scroll="scrollAnimate"
 	>
 		<notLogin v-if="!isLogin"></notLogin>
-		<view>
+		<view v-if="isLogin">
 			<division></division>
 			<findMoreAuthor></findMoreAuthor>
 			<articleListNoAd :list="articleList"></articleListNoAd>
@@ -70,7 +70,7 @@
 		},
 		computed:{
 			isLogin:function(){
-				return !!this.$store.state.user.userInfo.user_id_str
+				return this.$store.state.user.isLogin
 			}
 		}
 	}
