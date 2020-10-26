@@ -114,7 +114,7 @@
 							uni.setStorageSync('userInfo',JSON.stringify(res.data));
 							this.$store.commit('user/setUserInfo',res.data)
 							cookieJs.set('passport_csrf_token',res.data.session_key)
-							this.replaceToPage('/pages/my/index')
+							this.switchToTab('/pages/my/index')
 						})
 					break;
 					case 1:
@@ -122,7 +122,7 @@
 						.then(res=>uni.showToast({
 							title:res.data.description
 						}))
-					break
+					break;
 				}
 			},
 			getYZM(){	// 获取验证码
