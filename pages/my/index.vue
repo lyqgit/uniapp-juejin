@@ -51,9 +51,6 @@
 		components:{
 			myInfo
 		},
-		created() {
-			this.fresh()
-		},
 		data:function(){
 			return {
 				myInfo:{}
@@ -70,16 +67,17 @@
 			},
 			fresh(){
 				// 登录后再获取信息
-				if(this.isLogin){
-					getUserInfo({
-						user_id:this.$store.state.user.userInfo.user_id
-					}).then(res=>this.myInfo = res.data)
-				}
+				getUserInfo({
+					user_id:this.$store.state.user.userInfo.user_id
+				}).then(res=>this.myInfo = res.data)
 				
 			}
 		},
 		computed:{
 			isLogin:function(){
+				if(this.$store.state.user.isLogin){
+					this.fresh()
+				}
 				return this.$store.state.user.isLogin
 			}
 		}

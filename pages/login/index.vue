@@ -114,6 +114,8 @@
 							uni.setStorageSync('userInfo',JSON.stringify(res.data));
 							this.$store.commit('user/setUserInfo',res.data)
 							cookieJs.set('passport_csrf_token',res.data.session_key)
+							cookieJs.set('sessionid',res.data.session_key)
+							cookieJs.set('sessionid_ss',res.data.session_key)
 							this.switchToTab('/pages/my/index')
 						})
 					break;

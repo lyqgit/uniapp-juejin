@@ -39,9 +39,6 @@
 				loadStatus:false
 			}
 		},
-		created() {
-			this.fresh()
-		},
 		methods:{
 			// scroll-view到底部加载更多
 			onreachBottom() {
@@ -70,6 +67,12 @@
 		},
 		computed:{
 			isLogin:function(){
+				if(this.$store.state.user.isLogin){
+					const params = {"id_type":2,"client_type":2606,"cursor":"0","limit":20}
+					postFollowList(params).
+					then(res=>{this.articleList = res.data;this.articlePage=res.cursor})
+				}
+				console.log(this.$store.state.user.isLogin)
 				return this.$store.state.user.isLogin
 			}
 		}
