@@ -113,6 +113,7 @@
 							
 							uni.setStorageSync('userInfo',JSON.stringify(res.data));
 							this.$store.commit('user/setUserInfo',res.data)
+							this.$store.commit('user/setUserStatus',true)
 							cookieJs.set('passport_csrf_token',res.data.session_key)
 							cookieJs.set('sessionid',res.data.session_key)
 							cookieJs.set('sessionid_ss',res.data.session_key)

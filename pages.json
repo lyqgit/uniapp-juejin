@@ -126,6 +126,12 @@
 				"navigationStyle": "custom"
 			}
 			// #endif
+		},
+		{
+			"path": "pages/msgCenter/index",
+			"style": {
+				"navigationBarTitleText": "消息中心"
+			}
 		}
     ],
 	"globalStyle": {

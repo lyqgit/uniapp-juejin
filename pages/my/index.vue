@@ -12,7 +12,7 @@
 			<text class="iconfont">&#xe655;</text>
 		</view>
 		<view class="user-module">
-			<myInfo title="消息中心" >
+			<myInfo title="消息中心" @click.native="goToPage('/pages/msgCenter/index')">
 				<text class="iconfont" style="color:#0076FF;">&#xe6da;</text>
 			</myInfo>
 			<myInfo title="我赞过的" :count="myInfo.digg_article_count?myInfo.digg_article_count+'篇':''">
@@ -43,14 +43,16 @@
 </template>
 
 <script>
-	import myInfo from './components/myInfo'
+	import myInfo from '@/common/components/myInfo'
 	import { getUserInfo } from '@/services/userApi'
+	import pageRouter from '@/common/minix/router'
 	
 	export default {
 		name:'my',
 		components:{
 			myInfo
 		},
+		mixins:[pageRouter],
 		data:function(){
 			return {
 				myInfo:{}
