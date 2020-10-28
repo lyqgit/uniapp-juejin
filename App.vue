@@ -5,7 +5,7 @@
 			console.log('App Launch')
 			postTagList()
 			.then(res=>{
-				console.log(this.$store)
+				// console.log(this.$store)
 				this.$store.commit('tag/setTag',res.data)
 			})
 		},
