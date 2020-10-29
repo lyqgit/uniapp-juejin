@@ -93,7 +93,7 @@
 		padding: 20rpx;
 		.content{
 			margin-left: 70rpx;
-			margin-top: 40rpx;
+			margin-top: 20rpx;
 			font-size: 30rpx;
 		}
 		.reply-con{

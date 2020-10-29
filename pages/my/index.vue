@@ -12,8 +12,8 @@
 			<text class="iconfont">&#xe655;</text>
 		</view>
 		<view class="user-module">
-			<myInfo title="消息中心" @click.native="goToPage('/pages/msgCenter/index')">
-				<text class="iconfont" style="color:#0076FF;">&#xe6da;</text>
+			<myInfo title="消息中心" @click="goToPage('/pages/msgCenter/index')">
+				<text class="iconfont" style="color:#0076FF;">&#xe6f2;</text>
 			</myInfo>
 			<myInfo title="我赞过的" :count="myInfo.digg_article_count?myInfo.digg_article_count+'篇':''">
 				<text class="iconfont" style="color:#6CBD45;">&#xe672;</text>

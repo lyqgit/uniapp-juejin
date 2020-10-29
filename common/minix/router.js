@@ -1,15 +1,44 @@
+import store from '@/store'
+
 export default {
 	methods:{
-		goToPage(url){
-			uni.navigateTo({
-				url,
-				fail(err) {
-					console.log(err)
-					uni.showToast({
-						title:err
+		goToPage(url,mustLogin=false){
+			if(mustLogin){
+				if(store.state.user.isLogin){
+					uni.navigateTo({
+						url,
+						fail(err) {
+							console.log(err)
+							uni.showToast({
+								title:err
+							})
+						}
+					})
+					
+				}else{
+					uni.navigateTo({
+						url:'/pages/login/index',
+						fail(err) {
+							console.log(err)
+							uni.showToast({
+								title:err
+							})
+						}
 					})
 				}
-			})
+				
+			}else{
+				uni.navigateTo({
+					url,
+					fail(err) {
+						console.log(err)
+						uni.showToast({
+							title:err
+						})
+					}
+				})
+			}
+			
 		},
 		replaceToPage(url){
 			console.log(url)

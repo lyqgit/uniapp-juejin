@@ -14,3 +14,8 @@ export async function postCommentDetail(params){
 export async function postReplyList(params){
 	return post('/interact_api/v1/reply/list',params)
 }
+
+// 系统消息列表
+export async function postSysMsgList(params){
+	return post('/interact_api/v1/message/get_message',params)
+}

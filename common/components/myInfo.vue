@@ -1,5 +1,5 @@
 <template>
-	<view class="myInfo-con">
+	<view class="myInfo-con" @click="viewClick">
 		<view class="con-layout">
 			<slot></slot>
 			<text class="title">{{title}}</text>
@@ -12,7 +12,12 @@
 <script>
 	export default{
 		name:'myInfo',
-		props:['title','count']
+		props:['title','count'],
+		methods:{
+			viewClick(e){
+				this.$emit('click',e)
+			}
+		}
 	}
 </script>
 

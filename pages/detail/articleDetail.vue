@@ -61,7 +61,6 @@
 				},
 				detail:{},
 				relativeList:[],
-				showComment:false,
 				routeParams:{}
 			}
 		},
@@ -74,19 +73,22 @@
 				})
 				return
 			}
-			const userId = option.userId
-			const tagId = option.tagId.split(',')
+			// const userId = option.userId
+			// const tagId = option.tagId.split(',')
 			
 			console.log(id)
-			console.log(userId)
-			console.log(tagId)
+			// console.log(userId)
+			// console.log(tagId)
+			// this.routeParams = {
+			// 	id,
+			// 	userId,
+			// 	tagId
+			// }
 			this.routeParams = {
-				id,
-				userId,
-				tagId
+				id
 			}
 			this.loadArticleDetail(id)
-			this.loadRelativeList(id,userId,tagId)
+			// this.loadRelativeList(id,userId,tagId)
 		},
 		methods:{
 			goBack(){
@@ -106,7 +108,6 @@
 			onNavigationBarButtonTap(e){
 				if(e.index == 0){
 					// 评论
-					this.showComment = true
 					uni.navigateTo({
 						url:`/pages/comment/index?id=${this.routeParams.id}&digg_count=${this.detail.article_info.digg_count}&comment_count=${this.detail.article_info.comment_count}`
 					})

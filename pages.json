@@ -130,7 +130,15 @@
 		{
 			"path": "pages/msgCenter/index",
 			"style": {
-				"navigationBarTitleText": "消息中心"
+				"navigationBarTitleText": "消息中心",
+				"navigationBarBackgroundColor":"#FFFFFF"
+			}
+		},
+		{
+			"path": "pages/sysMsg/index",
+			"style": {
+				"navigationBarTitleText": "系统消息",
+				"navigationBarBackgroundColor":"#FFFFFF"
 			}
 		}
     ],

@@ -35,7 +35,16 @@ class Request {
 			title:"网络拉取中"
 		})
 		
+		
 		return new Promise((resolve, reject)=>{
+			
+			// 向cookie写入token
+			const token = uni.getStorageSync('token')
+			if(token && !cookieJs.get('sessionid')){
+				cookieJs.set('sessionid',token)
+				cookieJs.set('sessionid_ss',token)
+			}
+			
 			uni.request({
 				url:this.baseUrl+url,
 				header:header?header:this.header,
@@ -45,10 +54,11 @@ class Request {
 					
 					if(response.statusCode === 200){
 						// 验证cookie中的token是否过期，如果无返回数据则为过期，并消除token和存储的用户数据
-						if(cookieJs.get('sessionid') && !response.data){
+						if(uni.getStorageSync('token') && !response.data){
 							cookieJs.remove('sessionid')
 							cookieJs.remove('sessionid_ss')
 							uni.removeStorageSync('userInfo')
+							uni.removeStorageSync('token')
 							store.commit('user/setUserInfo',null)
 						}
 						// 处理业务
