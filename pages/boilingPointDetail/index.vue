@@ -202,7 +202,6 @@
 	}
 	.content{
 		@include title(30rpx);
-		@include sl
 	}
 	.content-img{
 		margin-top: 20rpx;
