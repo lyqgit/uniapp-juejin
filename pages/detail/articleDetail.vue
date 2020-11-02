@@ -89,6 +89,9 @@
 			}
 			this.loadArticleDetail(id)
 			// this.loadRelativeList(id,userId,tagId)
+			uni.setNavigationBarTitle({
+			    title: '详情'
+			});
 		},
 		methods:{
 			goBack(){

@@ -24,7 +24,6 @@ const passportArr = {
 	'i':'6c',
 	'g':'6f',
 	'k':'6e',
-	'l':'69',
 }
 
 export function createSecretKey(mobile){

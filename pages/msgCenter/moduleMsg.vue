@@ -10,13 +10,15 @@
 	>
 		<template v-for="item in list">
 			<msgItem
+			 :dzUser="item.src_info.name"
 			 :avatar="item.src_info.image"
 			 :idType="item.dst_info.id_type"
+			 :msg="item.dst_info.detail"
 			 :ctime="item.message.ctime"
-			 :msgType="4"
+			 :msgType="messageType"
 			 :linkHref="item.src_info.url"
-			 :itemId="item.dst_info.item_id"
-			 :linkStr="item.dst_info.name"
+			 :itemId="item | itemIdFilter(messageType)"
+			 :linkStr="item | linkStrFilter(messageType)"
 			 />
 		</template>
 	</scroll-view>
@@ -26,18 +28,23 @@
 	import { postSysMsgList } from '@/services/interactApi'
 	import msgItem from '@/common/components/msgItem'
 	
-	const message_type = 4
 	
 	export default {
 		name:'sysMsg',
 		components:{
 			msgItem
 		},
+		onLoad(option) {
+			console.log(option.messageType)
+			this.messageType = parseInt(option.messageType)
+			console.log(this.messageType)
+		},
 		data:function(){
 			return {
 				page:0,
 				list:[],
-				loadStatus:false
+				loadStatus:false,
+				messageType:0
 			}
 		},
 		created() {
@@ -49,7 +56,7 @@
 				console.log('加载更多')
 				const list = this.articleList
 				// 文章列表
-				postSysMsgList({"message_type":4,"cursor":this.page,"limit":20})
+				postSysMsgList({"message_type":this.messageType,"cursor":this.page,"limit":20})
 				.then(res=>{
 					this.list = list.concat(res.data);
 					this.page=res.cursor;
@@ -59,7 +66,7 @@
 			fresh(){
 				if(this.loadStatus === false){
 					this.loadStatus = true
-					postSysMsgList({"message_type":4,"cursor":"0","limit":20})
+					postSysMsgList({"message_type":this.messageType,"cursor":"0","limit":20})
 					.then(res=>{
 						this.list = res.data
 						setTimeout(()=>{
@@ -69,6 +76,21 @@
 				}
 				
 			}
+		},
+		filters:{
+			itemIdFilter(item,messageType){
+				console.log(messageType)
+				if(messageType == 3){
+					return item.parent_info.item_id
+				}
+				return item.dst_info.item_id
+			},
+			linkStrFilter(item,messageType){
+				if(messageType == 3){
+					return item.parent_info.name
+				}
+				return item.dst_info.name
+			},
 		}
 	}
 </script>

@@ -6,14 +6,32 @@
 				<view class="title-layout" v-if="msgType==4&&idType==1">
 					<!-- 系统消息 -->
 					您在掘金社区已升级至Lv1，查看等级规则：
-					<text class="link-font" @click="msgItemRouter(linkHref)">juejin.im</text>
+					<text class="link-font" @click="pageToWeb(linkHref)">juejin.im</text>
 				</view>
 				<view class="title-layout" v-if="msgType==4&&idType==2">
 					<!-- 系统消息 -->
 					您的文章
-					<text class="link-font" @click="msgItemRouter(linkHref)">{{linkStr}}</text>
+					<text class="link-font" @click="pageToDetail">{{linkStr}}</text>
 					已被推荐到首页
 				</view>
+				<view class="dz-title-layout" v-if="msgType==1">
+					<!-- 点赞消息 -->
+					<text class="link-font" style="margin-right: 10rpx;">{{dzUser}}</text>
+					赞了你的文章
+					<text class="link-font"  style="margin-left: 10rpx;" @click="pageToDetail">{{linkStr}}</text>
+				</view>
+				<view class="follow-title-layout" v-if="msgType==2">
+					<!-- 关注消息 -->
+					<text class="link-font" style="margin-right: 10rpx;">{{dzUser}}</text>
+					关注了你
+				</view>
+				<view class="dz-title-layout" v-if="msgType==3">
+					<!-- 评论消息 -->
+					<text class="link-font" style="margin-right: 10rpx;">{{dzUser}}</text>
+					评论了你的文章
+					<text class="link-font" style="margin-left: 10rpx;" @click="pageToDetail">{{linkStr}}</text>
+				</view>
+				<view class="title" v-if="msgType==3">{{msg}}</view>
 				<view class="ctime">{{diffTime(ctime)}}</view>
 			</view>
 		</view>
@@ -22,13 +40,18 @@
 </template>
 
 <script>
-	import moment from '@/common/utils/moment.js'
+	
 	import pageRouter from '@/common/minix/router'
+	import diffTime from '@/common/minix/diffTime.js'
 	
 	export default{
 		name:'msgItem',
-		mixins:[pageRouter],
+		mixins:[pageRouter,diffTime],
 		props:{
+			dzUser:{
+				type:String,
+				default:''
+			},
 			avatar:{
 				type:String,
 				default:''
@@ -69,40 +92,13 @@
 			}
 		},
 		methods:{
-			msgItemRouter(linkHref){
-				if(this.msgType == 4&&this.idType == 1){
-					// 单独载入网页的地址
-					this.goToPage()
-				}
-				if(this.msgType == 4&&this.idType == 2){
-					// 文章详情
-					this.goToPage('/pages/detail/articleDetail?id='+this.itemId)
-				}
-				
+			pageToWeb(linkHref){
+				// 单独载入网页的地址
+				this.goToPage('/pages/webIframe/index?url='+linkHref)
 			},
-			diffTime(ctime){
-				const currentTime = moment()
-				const commentTime = moment.unix(ctime)
-				const hour = currentTime.diff(commentTime,'hour')
-				const day = currentTime.diff(commentTime,'day')
-				const week = currentTime.diff(commentTime,'week')
-				const month = currentTime.diff(commentTime,'month')
-				const year = currentTime.diff(commentTime,'year')
-				if(year > 0){
-					return year+'年前'
-				}
-				if(month > 0){
-					return month+'月前'
-				}
-				if(week > 0){
-					return week+'周前'
-				}
-				if(day > 0){
-					return week+'天前'
-				}
-				if(day > 0){
-					return week+'小时前'
-				}
+			pageToDetail(){
+				// 文章详情
+				this.goToPage('/pages/detail/articleDetail?id='+this.itemId)
 			}
 		}
 	}
@@ -118,7 +114,6 @@
 	.container-layout{
 		padding: 35rpx 20rpx;
 		display: flex;
-		align-items: center;
 		.lf{
 			width: 60rpx;
 			height: 60rpx;
@@ -145,6 +140,29 @@
 		}
 	}
 	
+	.dz-title-layout{
+		@include description(26rpx)
+		.link-font{
+			font-size: 26rpx;
+			color: $custom-font-color-blue;
+			font-weight: bold;
+		}
+	}
+	
+	.follow-title-layout{
+		@include description(26rpx)
+		.link-font{
+			font-size: 26rpx;
+			color: #0A5C90;
+			font-weight: bold;
+		}
+	}
+	
+	.title{
+		@include title(26rpx)
+		margin-top:10rpx;
+		margin-bottom:10rpx;
+	}
 	
 	.bottom-border{
 		width: 100%;

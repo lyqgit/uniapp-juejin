@@ -135,9 +135,16 @@
 			}
 		},
 		{
-			"path": "pages/sysMsg/index",
+			"path": "pages/webIframe/index",
 			"style": {
-				"navigationBarTitleText": "系统消息",
+				"navigationBarTitleText": "信息",
+				"navigationBarBackgroundColor":"#FFFFFF"
+			}
+		},
+		{
+			"path": "pages/msgCenter/moduleMsg",
+			"style": {
+				"navigationBarTitleText": "信息",
 				"navigationBarBackgroundColor":"#FFFFFF"
 			}
 		}

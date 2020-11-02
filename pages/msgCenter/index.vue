@@ -1,17 +1,17 @@
 <template>
 	<view class="msgCenter-layout">
 		<division height="30rpx"></division>
-		<myInfo title="评论">
+		<myInfo title="评论" @click="goToPage('/pages/msgCenter/moduleMsg?messageType=3')">
 			<text class="iconfont" style="color:#FFC347;">&#xe81a;</text>
 		</myInfo>
-		<myInfo title="点赞">
+		<myInfo title="点赞" @click="goToPage('/pages/msgCenter/moduleMsg?messageType=1')">
 			<text class="iconfont" style="color:#6CBD45;">&#xe672;</text>
 		</myInfo>
-		<myInfo title="关注">
+		<myInfo title="关注" @click="goToPage('/pages/msgCenter/moduleMsg?messageType=2')">
 			<text class="iconfont" style="color:#0076FF;">&#xe8bb;</text>
 		</myInfo>
 		<division height="30rpx"></division>
-		<myInfo title="系统消息" @click="goToPage('/pages/sysMsg/index')">
+		<myInfo title="系统消息" @click="goToPage('/pages/msgCenter/moduleMsg?messageType=4')">
 			<text class="iconfont" style="color:#0076FF;">&#xe6f2;</text>
 		</myInfo>
 	</view>
