@@ -147,6 +147,12 @@
 				"navigationBarTitleText": "信息",
 				"navigationBarBackgroundColor":"#FFFFFF"
 			}
+		},
+		{
+			"path": "pages/personalHome/index",
+			"style": {
+				"navigationStyle":"custom"
+			}
 		}
     ],
 	"globalStyle": {

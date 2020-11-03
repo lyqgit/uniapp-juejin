@@ -7,7 +7,7 @@
 					<view class="user-info">
 						<view>
 							{{item.user_info.user_name}}
-							<smallFont v-if="item.user_info.level != 0" style="margin-left: 10rpx;" color="#8CDBF4" :text="'Lv'+item.user_info.level"></smallFont>
+							<smallFont v-if="item.user_info.level != 0" style="margin-left: 10rpx;vertical-align: middle;" color="#8CDBF4" :text="'Lv'+item.user_info.level"></smallFont>
 						</view>
 						<view>
 							<text v-if="item.user_info.job_title">{{item.user_info.job_title}}</text>
@@ -18,11 +18,11 @@
 					</view>
 					<view class="btn-layout">
 						<iconfont :icon="icon.dianzan"></iconfont>
-						<text style="vertical-align: middle;font-size: 16px;width: 16px;display: inline-block;">{{item.comment_info.digg_count>0?item.comment_info.digg_count:''}}</text>
+						<text style="vertical-align: middle;font-size: 12px;color: #A3AAB3;width: 16px;display: inline-block;">{{item.comment_info.digg_count>0?item.comment_info.digg_count:''}}</text>
 					</view>
 					<view class="btn-layout">
 						<iconfont :icon="icon.msg"></iconfont>
-						<text style="vertical-align: middle;font-size: 16px;width: 16px;display: inline-block;">{{item.comment_info.reply_count>0?item.comment_info.reply_count:''}}</text>
+						<text style="vertical-align: middle;font-size: 12px;color: #A3AAB3;width: 16px;display: inline-block;">{{item.comment_info.reply_count>0?item.comment_info.reply_count:''}}</text>
 					</view>
 				</view>
 				<view class="content">{{item.comment_info.comment_content}}</view>

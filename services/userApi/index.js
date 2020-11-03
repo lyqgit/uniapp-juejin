@@ -10,3 +10,8 @@ import { get } from '@/common/utils/request'
 export async function getUserInfo(params){
 	return get('/user_api/v1/user/get',params)
 }
+
+// 动态列表
+export async function getDynamicInfo(params){
+	return get('/user_api/v1/user/dynamic',params)
+}

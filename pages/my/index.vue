@@ -60,12 +60,10 @@
 		},
 		methods:{
 			goToLogin(){
-				uni.navigateTo({
-				    url: '/pages/login/index'
-				});
+				this.goToPage('/pages/login/index')
 			},
 			goToMyInfo(){
-				console.log('跳转到个人信息主页')
+				this.goToPage('/pages/personalHome/index',true)
 			},
 			fresh(){
 				// 登录后再获取信息

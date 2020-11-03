@@ -6,7 +6,6 @@
 		refresher-enabled
 		:refresher-triggered="loadStatus"
 		@scrolltolower="onreachBottom"
-		@scroll="scrollAnimate"
 	>
 		<template v-for="item in list">
 			<msgItem
@@ -19,6 +18,8 @@
 			 :linkHref="item.src_info.url"
 			 :itemId="item | itemIdFilter(messageType)"
 			 :linkStr="item | linkStrFilter(messageType)"
+			 :linkImg="item.dst_info.image"
+			 :parentIdType="item.parent_info.id_type"
 			 />
 		</template>
 	</scroll-view>
@@ -79,7 +80,6 @@
 		},
 		filters:{
 			itemIdFilter(item,messageType){
-				console.log(messageType)
 				if(messageType == 3){
 					return item.parent_info.item_id
 				}
