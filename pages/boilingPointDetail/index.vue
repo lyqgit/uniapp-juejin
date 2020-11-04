@@ -103,7 +103,7 @@
 			scrollHeaderAnimate(event){
 				if(event.detail.deltaY < 0){
 					this.headerTopTransilate = true
-				}else if(event.detail.scrollTop < 10){
+				}else if(event.detail.scrollTop < 150){
 					this.headerTopTransilate = false
 				}
 			},
